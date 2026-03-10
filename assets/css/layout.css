@@ -593,3 +593,117 @@
     padding-top: 1rem;
   }
 }
+/* ============================================
+   HERO MOBILE IMPROVEMENT
+   ============================================ */
+
+/* HERO MOBILE FIX */
+@media (max-width: 768px){
+
+  .hero__content{
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 24px;
+  }
+
+  /* ordem dos elementos */
+  .hero__text{ order: 1; }
+  .hero__visual{ order: 2; }
+  .hero__stats{ order: 3; }
+
+  /* IMAGENS */
+  .hero__visual{
+    width: 100%;
+  }
+
+  .hero__visual-grid{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+    width: 100%;
+  }
+
+  .hero__visual-item{
+    width: 100%;
+    aspect-ratio: 1 / 1;
+  }
+
+  .hero__visual-item img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  /* STATS */
+  .hero__stats{
+    position: static;
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+    gap: 12px;
+    width: 100%;
+  }
+
+  .stat-card{
+    padding: 14px;
+    text-align: center;
+  }
+
+}
+
+@media (max-width: 450px) {
+  .hero {
+    min-height: auto;
+    padding-top: 100px;
+  }
+
+  .hero__content {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+
+  /* texto centralizado e mais legível */
+  .hero__text {
+    text-align: center;
+  }
+
+  .hero__description {
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .hero__cta {
+    justify-content: center;
+  }
+
+  /* imagens vão para baixo */
+  .hero__visual {
+    height: auto;
+    width: 100%;
+  }
+
+  .hero__visual-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+  }
+
+  /* mantém proporção */
+  .hero__visual-item {
+    aspect-ratio: 1 / 1;
+  }
+
+  .hero__visual-item img {
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
+  }
+
+  /* stats ficam em linha mais compacta */
+  .hero__stats {
+    position: relative;
+    grid-template-columns: 1fr;
+    gap: 1rem;
+    margin-top: 2rem;
+    text-align: center;
+  }
+}
