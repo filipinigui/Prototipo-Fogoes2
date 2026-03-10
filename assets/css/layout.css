@@ -367,11 +367,6 @@
   width: auto;
 }
 
-.footer__slogan {
-  font-style: italic;
-  color: var(--color-gray);
-}
-
 .footer__section h4 {
   font-family: var(--font-primary);
   font-size: 1.25rem;

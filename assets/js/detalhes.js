@@ -1,146 +1,319 @@
-// ========================================
-// PRODUTO DETALHES - JAVASCRIPT
-// ========================================
+/**
+ * TERRIBILE FOGÕES - PRODUCT DETAILS
+ * Product detail page functionality
+ */
 
-let currentSlide = 0;
-const slides = document.querySelectorAll('.carousel-image');
-const thumbnails = document.querySelectorAll('.carousel-thumbnail');
-const totalSlides = slides.length;
+(function () {
+  "use strict";
 
-// Inicializa o carousel
-function initCarousel() {
-    showSlide(0);
-}
-
-// Mostra um slide específico
-function showSlide(index) {
-    // Remove classe active de todos os slides
-    slides.forEach(slide => slide.classList.remove('active'));
-    thumbnails.forEach(thumb => thumb.classList.remove('active'));
-    
-    // Adiciona classe active ao slide e thumbnail atual
-    slides[index].classList.add('active');
-    thumbnails[index].classList.add('active');
-    
-    currentSlide = index;
-}
-
-// Vai para o slide anterior
-function prevSlide() {
-    currentSlide = (currentSlide - 1 + totalSlides) % totalSlides;
-    showSlide(currentSlide);
-}
-
-// Vai para o próximo slide
-function nextSlide() {
-    currentSlide = (currentSlide + 1) % totalSlides;
-    showSlide(currentSlide);
-}
-
-// Vai para um slide específico
-function goToSlide(index) {
-    showSlide(index);
-}
-
-// Inicializa o carousel quando a página carregar
-document.addEventListener('DOMContentLoaded', function() {
-    initCarousel();
-    
-    // Obtém o ID do produto da URL
-    const urlParams = new URLSearchParams(window.location.search);
-    const productId = urlParams.get('id');
-    
-    if (productId) {
-        loadProductDetails(productId);
+  /**
+   * Product Gallery Management
+   */
+  class ProductGallery {
+    constructor(galleryElement) {
+      this.gallery = galleryElement;
+      this.images = galleryElement.querySelectorAll(".product-gallery__image");
+      this.thumbnails = galleryElement.querySelectorAll(
+        ".product-gallery__thumbnail",
+      );
+      this.currentIndex = 0;
+      this.init();
     }
-});
 
-// Carrega os detalhes do produto baseado no ID
-function loadProductDetails(productId) {
-    // Usa o array de produtos se disponível
-    if (typeof getProdutoById === 'function') {
-        const produto = getProdutoById(productId);
-        
-        if (produto) {
-            // Atualiza título e categoria
-            document.getElementById('productTitle').innerText = produto.nome;
-            document.getElementById('productNameBreadcrumb').innerText = produto.nome;
-            document.querySelector('.product-category').innerText = produto.categoria;
-            document.getElementById('productCategory').innerText = produto.categoria;
-            
-            // Atualiza descrição se disponível
-            const descElement = document.querySelector('.product-description');
-            if (descElement && produto.descricao) {
-                descElement.innerText = produto.descricao;
-            }
-            
-            // Atualiza especificações se disponíveis
-            if (produto.especificacoes) {
-                atualizarEspecificacoes(produto.especificacoes);
-            }
-            
-            // Atualiza botão WhatsApp
-            const btnWhatsApp = document.querySelector('.btn-contact-whatsapp');
-            if (btnWhatsApp && produto.mensagemWhatsApp) {
-                btnWhatsApp.onclick = function() {
-                    const numeroWhatsApp = '5511999999999'; // Altere para seu número
-                    const url = `https://wa.me/${numeroWhatsApp}?text=${encodeURIComponent(produto.mensagemWhatsApp)}`;
-                    window.open(url, '_blank');
-                };
-            }
-            
-            return;
+    init() {
+      this.setupThumbnails();
+      this.setupNavigation();
+      this.setupKeyboard();
+    }
+
+    setupThumbnails() {
+      this.thumbnails.forEach((thumb, index) => {
+        thumb.addEventListener("click", () => this.goToSlide(index));
+      });
+    }
+
+    setupNavigation() {
+      const prevBtn = this.gallery.querySelector(
+        ".product-gallery__nav-btn--prev",
+      );
+      const nextBtn = this.gallery.querySelector(
+        ".product-gallery__nav-btn--next",
+      );
+
+      if (prevBtn) {
+        prevBtn.addEventListener("click", () => this.previousSlide());
+      }
+
+      if (nextBtn) {
+        nextBtn.addEventListener("click", () => this.nextSlide());
+      }
+    }
+
+    setupKeyboard() {
+      document.addEventListener("keydown", (e) => {
+        if (e.key === "ArrowLeft") {
+          this.previousSlide();
+        } else if (e.key === "ArrowRight") {
+          this.nextSlide();
         }
+      });
     }
-    
-    // Fallback - se produto não for encontrado, mostra mensagem padrão
-    console.log('Produto não encontrado:', productId);
-}
 
-// Atualiza especificações do produto
-function atualizarEspecificacoes(specs) {
-    const specsGrid = document.querySelector('.specs-grid');
+    goToSlide(index) {
+      // Remove active from all
+      this.images.forEach((img) => img.classList.remove("active"));
+      this.thumbnails.forEach((thumb) => thumb.classList.remove("active"));
+
+      // Add active to current
+      if (this.images[index]) {
+        this.images[index].classList.add("active");
+      }
+      if (this.thumbnails[index]) {
+        this.thumbnails[index].classList.add("active");
+      }
+
+      this.currentIndex = index;
+    }
+
+    nextSlide() {
+      const nextIndex = (this.currentIndex + 1) % this.images.length;
+      this.goToSlide(nextIndex);
+    }
+
+    previousSlide() {
+      const prevIndex =
+        (this.currentIndex - 1 + this.images.length) % this.images.length;
+      this.goToSlide(prevIndex);
+    }
+  }
+
+  /**
+   * Product Tabs Management
+   */
+  class ProductTabs {
+    constructor(tabsElement) {
+      this.tabsElement = tabsElement;
+      this.buttons = tabsElement.querySelectorAll(".product-tabs__btn");
+      this.contents = tabsElement.querySelectorAll(".product-tabs__content");
+      this.init();
+    }
+
+    init() {
+      this.buttons.forEach((button, index) => {
+        button.addEventListener("click", () => this.switchTab(index));
+      });
+    }
+
+    switchTab(index) {
+      // Remove active from all
+      this.buttons.forEach((btn) => btn.classList.remove("active"));
+      this.contents.forEach((content) => content.classList.remove("active"));
+
+      // Add active to selected
+      if (this.buttons[index]) {
+        this.buttons[index].classList.add("active");
+      }
+      if (this.contents[index]) {
+        this.contents[index].classList.add("active");
+      }
+    }
+  }
+
+  /**
+   * Load product data from URL
+   */
+  function loadProductData() {
+    const urlParams = new URLSearchParams(window.location.search);
+    const productId = urlParams.get("id");
+
+    if (!productId || typeof produtosData === "undefined") {
+      console.warn("Product ID not found or product data not loaded");
+      return;
+    }
+
+    // Find product in data
+    let product = null;
+    Object.values(produtosData).forEach((category) => {
+      const found = category.find((p) => p.id === productId);
+      if (found) {
+        product = found;
+      }
+    });
+
+    if (!product) {
+      console.warn("Product not found:", productId);
+      return;
+    }
+
+    // Update page with product data
+    updateProductInfo(product);
+  }
+
+  /**
+   * Update page with product information
+   */
+  function updateProductInfo(product) {
+    // Update title
+    const titleElement = document.querySelector(".product-info__title");
+    if (titleElement) {
+      titleElement.textContent = product.nome;
+    }
+
+    // Update breadcrumb
+    const breadcrumbProduct = document.querySelector(".breadcrumb-item.active");
+    if (breadcrumbProduct) {
+      breadcrumbProduct.textContent = product.nome;
+    }
+
+    // Update category
+    const categoryElement = document.querySelector(".product-info__category");
+    if (categoryElement) {
+      categoryElement.textContent = product.categoria;
+    }
+
+    // Update description
+    const descriptionElement = document.querySelector(
+      ".product-info__description",
+    );
+    if (descriptionElement && product.descricao) {
+      descriptionElement.textContent = product.descricao;
+    }
+
+    // Update specs if available
+    if (product.especificacoes) {
+      updateSpecs(product.especificacoes);
+    }
+
+    // Update gallery if images available
+    if (product.imagens && product.imagens.length > 0) {
+      updateGallery(product.imagens);
+    } else if (product.imagem) {
+      // Backward compatibility: se tiver só 'imagem' (singular), converte para array
+      updateGallery([product.imagem]);
+    }
+  }
+
+  /**
+   * Update specifications
+   */
+  function updateSpecs(specs) {
+    const specsGrid = document.querySelector(".product-specs__grid");
     if (!specsGrid || !specs) return;
-    
-    // Limpa especificações existentes
-    specsGrid.innerHTML = '';
-    
-    // Adiciona novas especificações
-    for (const [key, value] of Object.entries(specs)) {
-        const label = key.charAt(0).toUpperCase() + key.slice(1).replace(/([A-Z])/g, ' $1');
-        const specHTML = `
-            <div class="spec-item">
-                <span class="spec-label">${label}:</span>
-                <span class="spec-value">${value}</span>
-            </div>
-        `;
-        specsGrid.insertAdjacentHTML('beforeend', specHTML);
+
+    // Clear existing specs
+    specsGrid.innerHTML = "";
+
+    // Add new specs
+    Object.entries(specs).forEach(([key, value]) => {
+      const specItem = document.createElement("div");
+      specItem.className = "product-specs__item";
+      specItem.innerHTML = `
+        <span class="product-specs__label">${key}:</span>
+        <span class="product-specs__value">${value}</span>
+      `;
+      specsGrid.appendChild(specItem);
+    });
+  }
+
+  /**
+   * Update gallery with product images
+   */
+  function updateGallery(images) {
+    const mainContainer = document.querySelector(".product-gallery__main");
+    const thumbnailsContainer = document.querySelector(
+      ".product-gallery__thumbnails",
+    );
+    const placeholder = document.querySelector(".product-gallery__placeholder");
+
+    if (!mainContainer || !thumbnailsContainer) return;
+
+    // Se não tem imagens, mantém placeholder
+    if (!images || images.length === 0) {
+      if (placeholder) {
+        placeholder.style.display = "flex";
+      }
+      return;
     }
-}
 
-// Navegação por teclado
-document.addEventListener('keydown', function(e) {
-    if (e.key === 'ArrowLeft') {
-        prevSlide();
-    } else if (e.key === 'ArrowRight') {
-        nextSlide();
+    // Esconde placeholder
+    if (placeholder) {
+      placeholder.style.display = "none";
     }
-});
 
-// Auto-play (opcional)
-let autoplayInterval;
+    // Limpa container principal
+    const existingImages = mainContainer.querySelectorAll(
+      ".product-gallery__image",
+    );
+    existingImages.forEach((img) => img.remove());
 
-function startAutoplay() {
-    autoplayInterval = setInterval(nextSlide, 5000);
-}
+    // Limpa thumbnails
+    thumbnailsContainer.innerHTML = "";
 
-function stopAutoplay() {
-    clearInterval(autoplayInterval);
-}
+    // Adiciona cada imagem
+    images.forEach((imageUrl, index) => {
+      // Adiciona imagem principal
+      const img = document.createElement("img");
+      img.src = imageUrl;
+      img.alt = `Produto - Imagem ${index + 1}`;
+      img.className = "product-gallery__image";
+      if (index === 0) {
+        img.classList.add("active");
+      }
+      mainContainer.insertBefore(
+        img,
+        mainContainer.querySelector(".product-gallery__nav"),
+      );
 
-// Para o autoplay quando o usuário interage
-document.querySelector('.main-carousel').addEventListener('mouseenter', stopAutoplay);
-document.querySelector('.main-carousel').addEventListener('mouseleave', startAutoplay);
+      // Adiciona thumbnail
+      const thumb = document.createElement("div");
+      thumb.className = "product-gallery__thumbnail";
+      if (index === 0) {
+        thumb.classList.add("active");
+      }
 
-// Inicia o autoplay
-startAutoplay();
+      const thumbImg = document.createElement("img");
+      thumbImg.src = imageUrl;
+      thumbImg.alt = `Thumbnail ${index + 1}`;
+      thumb.appendChild(thumbImg);
+
+      thumbnailsContainer.appendChild(thumb);
+    });
+
+    // Reinicializa galeria se necessário
+    const gallery = document.querySelector(".product-gallery");
+    if (gallery && window.ProductGallery) {
+      new window.ProductGallery(gallery);
+    }
+  }
+
+  /**
+   * Initialize page
+   */
+  function init() {
+    // Initialize gallery
+    const gallery = document.querySelector(".product-gallery");
+    if (gallery) {
+      new ProductGallery(gallery);
+    }
+
+    // Initialize tabs
+    const tabs = document.querySelector(".product-tabs");
+    if (tabs) {
+      new ProductTabs(tabs);
+    }
+
+    // Load product data
+    loadProductData();
+  }
+
+  // Initialize when DOM is ready
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", init);
+  } else {
+    init();
+  }
+
+  // Expose functions globally if needed
+  window.ProductGallery = ProductGallery;
+  window.ProductTabs = ProductTabs;
+})();
