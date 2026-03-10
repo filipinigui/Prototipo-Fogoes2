@@ -16,15 +16,12 @@
         rel="stylesheet">
 
     <!-- CSS Modular -->
-    <link rel="stylesheet" href="assets/css/style.css">
     <link rel="stylesheet" href="assets/css/base.css">
     <link rel="stylesheet" href="assets/css/layout.css">
     <link rel="stylesheet" href="assets/css/components.css">
     <link rel="stylesheet" href="assets/css/animations.css">
     <link rel="stylesheet" href="assets/css/utilities.css">
 </head>
-
-<script src="assets/js/app.js"></script>
 
 <body>
 
@@ -87,6 +84,7 @@
             </div>
         </div>
 
+        <!-- Stats: absolutos no desktop, fluem abaixo no mobile via CSS -->
         <div class="hero__stats">
             <div class="stat" data-animate>
                 <span class="stat__number">15+</span>
@@ -188,27 +186,33 @@
                 <div class="differential" data-animate>
                     <div class="differential__icon">✓</div>
                     <h3 class="differential__title">Qualidade Superior</h3>
-                    <p class="differential__description">Materiais selecionados e acabamento impecável em cada detalhe.
+                    <p class="differential__description">
+                        Materiais selecionados e acabamento impecável em cada detalhe do produto.
                     </p>
                 </div>
 
                 <div class="differential" data-animate>
                     <div class="differential__icon">🛠️</div>
                     <h3 class="differential__title">Artesanal</h3>
-                    <p class="differential__description">Cada fogão é único, produzido com técnicas tradicionais
-                        aprimoradas.</p>
+                    <p class="differential__description">
+                        Cada fogão é único, produzido com técnicas tradicionais aprimoradas ao longo de décadas.
+                    </p>
                 </div>
 
                 <div class="differential" data-animate>
                     <div class="differential__icon">⚡</div>
                     <h3 class="differential__title">Tecnologia</h3>
-                    <p class="differential__description">Equipamentos modernos aliados à experiência de décadas.</p>
+                    <p class="differential__description">
+                        Equipamentos modernos aliados à experiência acumulada de mais de 15 anos no setor.
+                    </p>
                 </div>
 
                 <div class="differential" data-animate>
                     <div class="differential__icon">🏆</div>
                     <h3 class="differential__title">Garantia</h3>
-                    <p class="differential__description">Produtos com garantia e suporte técnico especializado.</p>
+                    <p class="differential__description">
+                        Todos os produtos contam com garantia e suporte técnico especializado pós-venda.
+                    </p>
                 </div>
             </div>
         </div>
@@ -275,7 +279,6 @@
             <div class="footer__brand">
                 <img src="assets/img/Marca Terribile com slogan_Branco (2).png" alt="TERRIBILE Fogões"
                     class="footer__logo">
-
                 <p>Fogões artesanais de alta qualidade. Tradição e excelência desde 2009.</p>
             </div>
 
@@ -302,9 +305,9 @@
             <div class="footer__section">
                 <h4>Contato</h4>
                 <ul class="footer__links">
-                    <li> (54) 9 9996-0180</li>
-                    <li> contato@terribilefogoes.com</li>
-                    <li> Seg-Sex: 9h às 17:30h</li>
+                    <li>(54) 9 9996-0180</li>
+                    <li>contato@terribilefogoes.com</li>
+                    <li>Seg-Sex: 9h às 17:30h</li>
                 </ul>
             </div>
         </div>
@@ -314,9 +317,10 @@
         </div>
     </footer>
 
-    <!-- JavaScript Modular -->
+    <!-- JavaScript: sempre no final do body para não bloquear renderização -->
     <script src="assets/js/produtos.js"></script>
-    
+    <script src="assets/js/app.js"></script>
+
 </body>
 
 </html>

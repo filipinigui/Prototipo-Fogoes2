@@ -484,3 +484,99 @@
 .no-results__description {
   color: var(--color-gray);
 }
+
+/* =================================================
+   MOBILE RESPONSIVE (≤ 768px)
+================================================= */
+
+@media (max-width: 768px) {
+
+  /* Botões: largura completa no mobile */
+  .btn {
+    width: 100%;
+    max-width: 100%;
+    padding: 0.875rem 1.5rem;
+    font-size: 1rem;
+  }
+
+  .btn--view,
+  .btn--whatsapp {
+    width: 100%;
+  }
+
+  /* Cards */
+  .product-card,
+  .category-card {
+    max-width: 100%;
+  }
+
+  .product-card__actions {
+    flex-direction: column;
+  }
+
+  /* Stats */
+  .stat {
+    padding: 1rem;
+  }
+
+  .stat__number {
+    font-size: 2.5rem;
+  }
+
+  /* Filtros */
+  .filters__buttons {
+    gap: 0.75rem;
+  }
+
+  .filter-btn {
+    padding: 0.625rem 1rem;
+    font-size: 0.875rem;
+    white-space: nowrap;
+  }
+
+  /* Cards de contato */
+  .contact-card {
+    padding: 1.5rem;
+  }
+
+  .contact-card__actions {
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .contact-card__link {
+    width: 100%;
+    text-align: center;
+  }
+
+  /* Diferenciais: text maior e respiração adequada em 2 colunas */
+  .differential {
+    padding: 1.5rem 1rem;
+  }
+
+  .differential__description {
+    font-size: 0.9375rem;
+    line-height: 1.7;
+  }
+
+}
+
+@media (max-width: 400px) {
+  .contact-card {
+    padding: 1.25rem 1rem;
+    text-align: center;
+  }
+
+  .contact-card__icon {
+    margin: 0 auto 1rem;
+  }
+
+  .contact-card__actions {
+    justify-content: center;
+  }
+
+  .contact-card__link {
+    font-size: 0.875rem;
+    padding: 0.625rem;
+  }
+}
