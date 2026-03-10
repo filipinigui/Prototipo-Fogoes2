@@ -25,7 +25,7 @@ function configurarAOS() {
 
 // Função principal para carregar produtos com novo design
 function carregarProdutosNovo() {
-    const grid = document.getElementById('productsGrid');
+    const grid = document.getElementById('products-grid');
     if (!grid) return;
     
     grid.innerHTML = '';
@@ -79,6 +79,7 @@ function criarProdutoCardNovo(produto, index) {
                     <button class="btn-view-product" onclick="viewProductNovo('${produto.id}')">
                         Ver Detalhes
                     </button>
+                    
                     <button class="btn-whatsapp-new" onclick="contactWhatsAppProductNovo('${produto.id}')">
                         <i class="bi bi-whatsapp"></i>
                     </button>
