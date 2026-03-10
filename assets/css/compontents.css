@@ -196,7 +196,7 @@
 }
 
 .product-card__info {
-  padding: 1.5rem;
+  padding: 0rem;
 }
 
 .product-card__category {
@@ -483,4 +483,89 @@
 
 .no-results__description {
   color: var(--color-gray);
+}
+
+/* ============================================
+   MOBILE RESPONSIVE
+   ============================================ */
+
+@media (max-width: 768px) {
+  
+  /* BUTTONS */
+  .btn {
+    width: 100%;
+    max-width: 100%;
+    padding: 0.875rem 1.5rem;
+    font-size: 1rem;
+  }
+
+  .btn--view,
+  .btn--whatsapp {
+    width: 100%;
+  }
+
+  /* CARDS */
+  .product-card,
+  .category-card {
+    max-width: 100%;
+  }
+
+  .product-card__actions {
+    flex-direction: column;
+  }
+
+  /* STATS */
+  .stat {
+    padding: 1rem;
+  }
+
+  .stat__number {
+    font-size: 2.5rem;
+  }
+
+  /* FILTERS */
+  .filters__buttons {
+    gap: 0.75rem;
+  }
+
+  .filter-btn {
+    padding: 0.625rem 1rem;
+    font-size: 0.875rem;
+    white-space: nowrap;
+  }
+
+  /* CONTACT CARDS */
+  .contact-card {
+    padding: 1.5rem;
+  }
+
+  .contact-card__actions {
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .contact-card__link {
+    width: 100%;
+    text-align: center;
+  }
+}
+
+@media (max-width: 400px) {
+  .contact-card {
+    padding: 1.25rem 1rem; /* Padding equilibrado */
+    text-align: center;
+  }
+
+  .contact-card__icon {
+    margin: 0 auto 1rem;
+  }
+
+  .contact-card__actions {
+    justify-content: center; /* Botões centralizados */
+  }
+
+  .contact-card__link {
+    font-size: 0.875rem;
+    padding: 0.625rem;
+  }
 }
