@@ -23,7 +23,7 @@ const produtosData = {
                 material: 'Vitrocerâmica temperada',
                 dimensoes: '60x60x90 cm',
                 peso: '45kg'
-            },
+            }, 
             mensagemWhatsApp: 'Olá! Gostaria de mais informações sobre o Fogão Lorem nº1 vitrocerâmica sem gabinete.'
         },
         {
