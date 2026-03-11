@@ -30,7 +30,7 @@
       "fogoes-aluminio": "Alumínio",
       "fogoes-ferro": "Ferro",
       "fogoes-campeiros": "Campeiros",
-      acessorios: "Acessórios",
+      "acessorios-fogao": "Acessórios",
     };
     return map[urlKey] || null;
   }
@@ -78,10 +78,10 @@
       '    <div class="product-card__actions">',
       '      <button class="btn btn--view" onclick="viewProduct(\'' +
         product.id +
-        '\')">Ver Detalhes</button>',
+        "')\">Ver Detalhes</button>",
       '      <a href="https://wa.me/54999960180?text=' +
         encodeURIComponent(
-          product.mensagemWhatsApp || "Olá! Gostaria de mais informações."
+          product.mensagemWhatsApp || "Olá! Gostaria de mais informações.",
         ) +
         '" class="btn btn--whatsapp" target="_blank">WhatsApp</a>',
       "    </div>",
@@ -121,7 +121,7 @@
     renderProducts(
       all.filter(function (p) {
         return p.categoria.includes(filter);
-      })
+      }),
     );
   }
 
