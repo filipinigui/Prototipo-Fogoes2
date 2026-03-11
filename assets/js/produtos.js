@@ -1,629 +1,907 @@
 // ========================================
 // TERRIBILE FOGÕES - PRODUTOS DATABASE
-// Todos os produtos com múltiplas imagens
 // ========================================
 
 const produtosData = {
-    // ====================================
-    // CATEGORIA 1: FOGÕES VITROCERÂMICA
-    // ====================================
-    'fogoes-vitroceramica': [
-        {
-            id: 'vitro-lorem1',
-            nome: 'Fogão Lorem 1 Vitrocerâmica',
-            categoria: 'Fogões Chapa Vitrocerâmica',
-            descricao: 'Fogão artesanal com chapa de vitrocerâmica temperada, resistente e elegante. Ideal para cozinhas residenciais que buscam durabilidade e beleza.',
-            imagens: [
-                'assets/img/produtos/vitroceramica/fogao1-frente.jpg',
-                'assets/img/produtos/vitroceramica/fogao1-lateral.jpg',
-                'assets/img/produtos/vitroceramica/fogao1-topo.jpg',
-                'assets/img/produtos/vitroceramica/fogao1-detalhe.jpg'
-            ],
-            especificacoes: {
-                material: 'Vitrocerâmica temperada',
-                dimensoes: '60x60x90 cm',
-                peso: '45kg'
-            }, 
-            mensagemWhatsApp: 'Olá! Gostaria de mais informações sobre o Fogão Lorem nº1 vitrocerâmica sem gabinete.'
-        },
-        {
-            id: 'vitro-lorem2',
-            nome: 'Fogão Lorem 2 Vitrocerâmica',
-            categoria: 'Fogões Chapa Vitrocerâmica',
-            descricao: 'Fogão premium com chapa vitrocerâmica de alta resistência. Design moderno e funcionalidade superior para sua cozinha.',
-            imagens: [
-                'assets/img/produtos/vitroceramica/fogao2-frente.jpg',
-                'assets/img/produtos/vitroceramica/fogao2-lateral.jpg',
-                'assets/img/produtos/vitroceramica/fogao2-topo.jpg',
-                'assets/img/produtos/vitroceramica/fogao2-detalhe.jpg'
-            ],
-            especificacoes: {
-                material: 'Vitrocerâmica premium',
-                dimensoes: '90x60x90 cm',
-                bocas: '5',
-                peso: '52kg'
-            },
-            mensagemWhatsApp: 'Olá! Gostaria de um orçamento para o Fogão Lorem 2 vitrocerâmica.'
-        },
-        {
-            id: 'vitro-lorem00',
-            nome: 'Fogão Lorem 00 Vitrocerâmica',
-            categoria: 'Fogões Chapa Vitrocerâmica',
-            descricao: 'Fogão industrial grande porte com 8 bocas e chapa vitrocerâmica. Perfeito para restaurantes e cozinhas comerciais.',
-            imagens: [
-                'assets/img/produtos/vitroceramica/fogao00-frente.jpg',
-                'assets/img/produtos/vitroceramica/fogao00-lateral.jpg',
-                'assets/img/produtos/vitroceramica/fogao00-topo.jpg',
-                'assets/img/produtos/vitroceramica/fogao00-uso.jpg'
-            ],
-            especificacoes: {
-                material: 'Vitrocerâmica industrial',
-                dimensoes: '120x80x90 cm',
-                bocas: '8',
-                peso: '85kg'
-            },
-            mensagemWhatsApp: 'Preciso de informações sobre o Fogão Vitrocerâmico 8 bocas Industrial.'
-        },
-        {
-            id: 'vitro-duplacombustao',
-            nome: 'Fogão Dupla Combustão Vitrocerâmica',
-            categoria: 'Fogões Chapa Vitrocerâmica',
-            descricao: 'Fogão especial com sistema de dupla combustão e chapa vitrocerâmica. Eficiência energética superior.',
-            imagens: [
-                'assets/img/produtos/vitroceramica/dupla-frente.jpg',
-                'assets/img/produtos/vitroceramica/dupla-lateral.jpg',
-                'assets/img/produtos/vitroceramica/dupla-topo.jpg',
-                'assets/img/produtos/vitroceramica/dupla-detalhe.jpg'
-            ],
-            especificacoes: {
-                material: 'Vitrocerâmica especial',
-                dimensoes: '70x70x95 cm',
-                bocas: '4',
-                peso: '58kg',
-                sistema: 'Dupla combustão'
-            },
-            mensagemWhatsApp: 'Gostaria de saber mais sobre o Fogão Dupla Combustão Vitrocerâmico.'
-        },
-        {
-            id: 'vitro-lorem1-gabinete',
-            nome: 'Fogão Lorem 1 Vitrocerâmica com Gabinete',
-            categoria: 'Fogões Chapa Vitrocerâmica',
-            descricao: 'Fogão completo com chapa vitrocerâmica e gabinete integrado. Inclui forno e armazenamento.',
-            imagens: [
-                'assets/img/produtos/vitroceramica/gabinete1-frente.jpg',
-                'assets/img/produtos/vitroceramica/gabinete1-lateral.jpg',
-                'assets/img/produtos/vitroceramica/gabinete1-aberto.jpg',
-                'assets/img/produtos/vitroceramica/gabinete1-detalhe.jpg'
-            ],
-            especificacoes: {
-                material: 'Vitrocerâmica temperada',
-                dimensoes: '60x60x140 cm',
-                bocas: '4',
-                peso: '75kg',
-                forno: 'Incluso'
-            },
-            mensagemWhatsApp: 'Olá! Quero informações sobre o Fogão Vitrocerâmico com Gabinete.'
-        },
-        {
-            id: 'vitro-lorem2-gabinete',
-            nome: 'Fogão Lorem 2 Vitrocerâmica com Gabinete',
-            categoria: 'Fogões Chapa Vitrocerâmica',
-            descricao: 'Fogão premium com chapa vitrocerâmica e gabinete completo. Design elegante e alta funcionalidade.',
-            imagens: [
-                'assets/img/produtos/vitroceramica/gabinete2-frente.jpg',
-                'assets/img/produtos/vitroceramica/gabinete2-lateral.jpg',
-                'assets/img/produtos/vitroceramica/gabinete2-aberto.jpg',
-                'assets/img/produtos/vitroceramica/gabinete2-uso.jpg'
-            ],
-            especificacoes: {
-                material: 'Vitrocerâmica premium',
-                dimensoes: '90x60x140 cm',
-                bocas: '5',
-                peso: '92kg',
-                forno: 'Duplo'
-            },
-            mensagemWhatsApp: 'Preciso de um orçamento para o Fogão Vitrocerâmico Premium com Gabinete.'
-        }
-    ],
+  // ====================================
+  // CATEGORIA 1: FOGÕES VITROCERÂMICA
+  // ====================================
+  "fogoes-vitroceramica": [
+    {
+      id: "vitro-loren1",
+      nome: "Fogão Loren 1 Vitrocerâmica",
+      categoria: "Fogões Chapa Vitrocerâmica",
+      descricao:
+        "Perfeito para quem busca um fogão a lenha eficiente com chapa vitrocerâmica temperada. Design compacto, acabamento primoroso e alto desempenho para cozinhas residenciais.",
+      imagens: [
+        "assets/img/produtos/vitroceramica/fogao1-frente.jpg",
+        "assets/img/produtos/vitroceramica/fogao1-lateral.jpg",
+        "assets/img/produtos/vitroceramica/fogao1-topo.jpg",
+        "assets/img/produtos/vitroceramica/fogao1-detalhe.jpg",
+      ],
+      especificacoes: {
+        Modelo: "Loren 1 Vitrocerâmica",
+        Tipo: "A lenha",
+        "Saídas da Chaminé":
+          "Atrás: lado esquerdo / Atrás: lado direito / Na chapa: lado esquerdo / Na chapa: lado direito",
+        Acabamento: "Preto matte com detalhes em inox",
+        Chapa: "Vitrocerâmica temperada – 6 mm",
+        Queimador: "Revestido com tijolos refratários de alto teor de alumina",
+        "Diâmetro da Chaminé": "Ø 150 mm",
+        "Dimensões (A x L x P)": "85 x 72 x 60 cm",
+        Peso: "45 kg",
+      },
+      caracteristicas: [
+        "Chapa vitrocerâmica temperada de alta resistência",
+        "Queimador revestido com tijolos refratários",
+        "Acabamento preto matte resistente a altas temperaturas",
+        "Saída de chaminé em 4 posições configuráveis",
+        "Fácil limpeza da superfície vitrocerâmica",
+        "Puxadores em inox resistente ao calor",
+        "Regulagem de entrada de ar na porta do queimador",
+      ],
+      mensagemWhatsApp:
+        "Olá! Gostaria de mais informações sobre o Fogão Loren 1 Vitrocerâmica.",
+    },
+    {
+      id: "vitro-loren2",
+      nome: "Fogão Loren 2 Vitrocerâmica",
+      categoria: "Fogões Chapa Vitrocerâmica",
+      descricao:
+        "Fogão a lenha de médio porte com chapa vitrocerâmica premium. Ideal para famílias que exigem maior área de cozimento aliada à elegância e durabilidade.",
+      imagens: [
+        "assets/img/produtos/vitroceramica/fogao2-frente.jpg",
+        "assets/img/produtos/vitroceramica/fogao2-lateral.jpg",
+        "assets/img/produtos/vitroceramica/fogao2-topo.jpg",
+        "assets/img/produtos/vitroceramica/fogao2-detalhe.jpg",
+      ],
+      especificacoes: {
+        Modelo: "Loren 2 Vitrocerâmica",
+        Tipo: "A lenha",
+        "Saídas da Chaminé":
+          "Atrás: lado esquerdo / Atrás: lado direito / Na chapa: lado esquerdo / Na chapa: lado direito",
+        Acabamento: "Preto matte com detalhes em inox",
+        Chapa: "Vitrocerâmica temperada premium – 6 mm",
+        Queimador: "Revestido com tijolos refratários de alto teor de alumina",
+        "Diâmetro da Chaminé": "Ø 150 mm",
+        "Dimensões (A x L x P)": "85 x 93 x 63 cm",
+        Peso: "52 kg",
+      },
+      caracteristicas: [
+        "Chapa vitrocerâmica premium de maior área útil de cozimento",
+        "Queimador revestido com tijolos refratários de alto teor de alumina",
+        "Acabamento preto matte resistente a altas temperaturas",
+        "Saída de chaminé em 4 posições configuráveis",
+        "Varão em inox para apoio de utensílios",
+        "Fácil limpeza da superfície vitrocerâmica",
+        "Regulagem de entrada de ar na porta do queimador",
+      ],
+      mensagemWhatsApp:
+        "Olá! Gostaria de um orçamento para o Fogão Loren 2 Vitrocerâmica.",
+    },
+    {
+      id: "vitro-loren00",
+      nome: "Fogão Loren 00 Vitrocerâmica",
+      categoria: "Fogões Chapa Vitrocerâmica",
+      descricao:
+        "Fogão a lenha de grande porte com chapa vitrocerâmica industrial. Projetado para cozinhas comerciais, restaurantes e estabelecimentos que demandam alta capacidade de produção.",
+      imagens: [
+        "assets/img/produtos/vitroceramica/fogao00-frente.jpg",
+        "assets/img/produtos/vitroceramica/fogao00-lateral.jpg",
+        "assets/img/produtos/vitroceramica/fogao00-topo.jpg",
+        "assets/img/produtos/vitroceramica/fogao00-uso.jpg",
+      ],
+      especificacoes: {
+        Modelo: "Loren 00 Vitrocerâmica",
+        Tipo: "A lenha",
+        "Saídas da Chaminé": "Posição fixa — conforme projeto de instalação",
+        Acabamento: "Preto matte com detalhes em inox",
+        Chapa: "Vitrocerâmica industrial temperada – 8 mm",
+        Queimador:
+          "Câmara ampliada revestida com tijolos refratários de alto teor de alumina",
+        "Diâmetro da Chaminé": "Ø 200 mm",
+        "Dimensões (A x L x P)": "90 x 125 x 80 cm",
+        Peso: "85 kg",
+        Garantia: "12 meses contra defeitos de fabricação",
+      },
+      caracteristicas: [
+        "Chapa vitrocerâmica industrial de alta espessura (8 mm)",
+        "Câmara de combustão ampliada para alto desempenho",
+        "Queimador revestido com tijolos refratários de alto teor de alumina",
+        "Acabamento preto matte resistente a altas temperaturas",
+        "Suporta panelas e recipientes de grande porte",
+        "Fácil limpeza da superfície vitrocerâmica",
+        "Construção robusta para uso comercial intenso",
+        "Garantia TERRIBILE de 12 meses",
+      ],
+      mensagemWhatsApp:
+        "Preciso de informações sobre o Fogão Loren 00 Vitrocerâmico para uso comercial.",
+    },
+    {
+      id: "vitro-duplacombustao",
+      nome: "Fogão Dupla Combustão Vitrocerâmica",
+      categoria: "Fogões Chapa Vitrocerâmica",
+      descricao:
+        "Fogão a lenha com sistema exclusivo de dupla combustão e chapa vitrocerâmica. Maior aproveitamento da lenha, redução de fumaça e eficiência energética superior.",
+      imagens: [
+        "assets/img/produtos/vitroceramica/dupla-frente.jpg",
+        "assets/img/produtos/vitroceramica/dupla-lateral.jpg",
+        "assets/img/produtos/vitroceramica/dupla-topo.jpg",
+        "assets/img/produtos/vitroceramica/dupla-detalhe.jpg",
+      ],
+      especificacoes: {
+        Modelo: "Dupla Combustão Vitrocerâmica",
+        Tipo: "A lenha",
+        Sistema: "Dupla combustão — queima dos gases residuais",
+        "Saídas da Chaminé":
+          "Atrás: lado esquerdo / Atrás: lado direito / Na chapa: lado esquerdo / Na chapa: lado direito",
+        Acabamento: "Preto matte com detalhes em inox",
+        Chapa: "Vitrocerâmica temperada especial – 6 mm",
+        Queimador:
+          "Câmara de dupla combustão com tijolos refratários de alto teor de alumina",
+        "Diâmetro da Chaminé": "Ø 150 mm",
+        "Dimensões (A x L x P)": "88 x 79 x 70 cm",
+        Peso: "58 kg",
+        Garantia: "12 meses contra defeitos de fabricação",
+      },
+      caracteristicas: [
+        "Sistema de dupla combustão — maior aproveitamento do calor",
+        "Queima dos gases residuais com redução significativa de fumaça",
+        "Chapa vitrocerâmica temperada de alta resistência",
+        "Câmara revestida com tijolos refratários de alto teor de alumina",
+        "Saída de chaminé em 4 posições configuráveis",
+        "Regulagem precisa da entrada de ar",
+        "Fácil limpeza da superfície vitrocerâmica",
+        "Garantia TERRIBILE de 12 meses",
+      ],
+      mensagemWhatsApp:
+        "Gostaria de saber mais sobre o Fogão Dupla Combustão Vitrocerâmico.",
+    },
+    {
+      id: "vitro-loren1-gabinete",
+      nome: "Fogão Loren 1 Vitrocerâmica com Gabinete",
+      categoria: "Fogões Chapa Vitrocerâmica",
+      descricao:
+        "Fogão a lenha Loren 1 com chapa vitrocerâmica e gabinete completo. Conta com forno de interior em inox, termômetro analógico e depósito para lenha — tudo em um só produto.",
+      imagens: [
+        "assets/img/produtos/vitroceramica/vitroceramica-lorem1-gabinete.png",
+        "assets/img/produtos/vitroceramica/gabinete1-lateral.jpg",
+        "assets/img/produtos/vitroceramica/gabinete1-aberto.jpg",
+        "assets/img/produtos/vitroceramica/gabinete1-detalhe.jpg",
+      ],
+      especificacoes: {
+        Modelo: "Loren 1 Vitrocerâmica com Gabinete",
+        Tipo: "A lenha",
+        "Saídas da Chaminé":
+          "Atrás: lado esquerdo / Atrás: lado direito / Na chapa: lado esquerdo / Na chapa: lado direito",
+        Acabamento: "Preto matte com detalhes em inox",
+        Chapa: "Vitrocerâmica temperada – 6 mm",
+        Forno: "Interior em inox com termômetro analógico até 350 °C",
+        Queimador: "Revestido com tijolos refratários de alto teor de alumina",
+        "Diâmetro da Chaminé": "Ø 150 mm",
+        "Dimensões (A x L x P)": "140 x 72 x 60 cm",
+        Peso: "75 kg",
+        Garantia: "12 meses contra defeitos de fabricação",
+      },
+      caracteristicas: [
+        "Chapa vitrocerâmica temperada de alta resistência",
+        "Forno com interior em inox e termômetro analógico até 350 °C",
+        "Forno com aquecimento envolvente para assar com uniformidade",
+        "Queimador revestido com tijolos refratários de alto teor de alumina",
+        "Depósito para lenha no gabinete inferior",
+        "Puxadores cerâmicos resistentes ao calor",
+        "Saída de chaminé em 4 posições configuráveis",
+        "Varão em inox para apoio de utensílios",
+        "Garantia TERRIBILE de 12 meses",
+      ],
+      mensagemWhatsApp:
+        "Olá! Quero informações sobre o Fogão Loren 1 Vitrocerâmica com Gabinete.",
+    },
+    {
+      id: "vitro-loren2-gabinete",
+      nome: "Fogão Loren 2 Vitrocerâmica com Gabinete",
+      categoria: "Fogões Chapa Vitrocerâmica",
+      descricao:
+        "Fogão a lenha Loren 2 com chapa vitrocerâmica premium e gabinete de grande porte. Para quem busca o máximo em capacidade de cozimento, forno de alto desempenho e acabamento impecável.",
+      imagens: [
+        "assets/img/produtos/vitroceramica/vitroceramica-lorem2-gabinete.png .png",
+        "assets/img/produtos/vitroceramica/vitroceramica-lorem2-gabinete2.png",
+        "assets/img/produtos/vitroceramica/gabinete2-aberto.jpg",
+        "assets/img/produtos/vitroceramica/gabinete2-uso.jpg",
+      ],
+      especificacoes: {
+        Modelo: "Loren 2 Vitrocerâmica com Gabinete",
+        Tipo: "A lenha",
+        "Saídas da Chaminé":
+          "Atrás: lado esquerdo / Atrás: lado direito / Na chapa: lado esquerdo / Na chapa: lado direito",
+        Acabamento: "Preto matte com detalhes em inox",
+        Chapa: "Vitrocerâmica premium temperada – 6 mm",
+        Forno:
+          "Interior em inox com termômetro analógico até 350 °C — forno duplo",
+        Queimador: "Revestido com tijolos refratários de alto teor de alumina",
+        "Diâmetro da Chaminé": "Ø 150 mm",
+        "Dimensões (A x L x P)": "140 x 93 x 63 cm",
+        Peso: "92 kg",
+        Garantia: "12 meses contra defeitos de fabricação",
+      },
+      caracteristicas: [
+        "Chapa vitrocerâmica premium com maior área útil de cozimento",
+        "Forno duplo com interior em inox e termômetro analógico até 350 °C",
+        "Forno com aquecimento envolvente para resultados profissionais",
+        "Queimador revestido com tijolos refratários de alto teor de alumina",
+        "Depósito para lenha no gabinete inferior",
+        "Puxadores cerâmicos e varão em inox",
+        "Saída de chaminé em 4 posições configuráveis",
+        "Regulagem de entrada de ar na porta do queimador",
+        "Garantia TERRIBILE de 12 meses",
+      ],
+      mensagemWhatsApp:
+        "Preciso de um orçamento para o Fogão Loren 2 Vitrocerâmica com Gabinete.",
+    },
+  ],
 
-    // ====================================
-    // CATEGORIA 2: FOGÕES ALUMÍNIO
-    // ====================================
-    'fogoes-aluminio': [
-        {
-            id: 'al-lorem1',
-            nome: 'Fogão Alumínio 4 Bocas',
-            categoria: 'Fogões Chapa de Alumínio',
-            descricao: 'Fogão residencial com chapa de alumínio fundido de alta qualidade. Durabilidade excepcional e fácil manutenção.',
-            imagens: [
-                'assets/img/produtos/aluminio/fogao1-frente.jpg',
-                'assets/img/produtos/aluminio/fogao1-lateral.jpg',
-                'assets/img/produtos/aluminio/fogao1-topo.jpg',
-                'assets/img/produtos/aluminio/fogao1-detalhe.jpg'
-            ],
-            especificacoes: {
-                material: 'Alumínio fundido',
-                dimensoes: '60x60x90 cm',
-                bocas: '4',
-                peso: '38kg'
-            },
-            mensagemWhatsApp: 'Olá! Gostaria de informações sobre o Fogão de Alumínio 4 bocas.'
-        },
-        {
-            id: 'al-lorem2',
-            nome: 'Fogão Alumínio 5 Bocas',
-            categoria: 'Fogões Chapa de Alumínio',
-            descricao: 'Fogão com chapa de alumínio anodizado e 5 queimadores de alta potência. Perfeito para famílias grandes.',
-            imagens: [
-                'assets/img/produtos/aluminio/fogao2-frente.jpg',
-                'assets/img/produtos/aluminio/fogao2-lateral.jpg',
-                'assets/img/produtos/aluminio/fogao2-topo.jpg',
-                'assets/img/produtos/aluminio/fogao2-uso.jpg'
-            ],
-            especificacoes: {
-                material: 'Alumínio anodizado',
-                dimensoes: '90x60x90 cm',
-                bocas: '5',
-                peso: '44kg'
-            },
-            mensagemWhatsApp: 'Preciso de um orçamento para o Fogão de Alumínio 5 bocas.'
-        },
-        {
-            id: 'al-lorem1-gabinete',
-            nome: 'Fogão Alumínio Compacto com Gabinete',
-            categoria: 'Fogões Chapa de Alumínio',
-            descricao: 'Fogão compacto com chapa de alumínio e gabinete integrado. Ideal para apartamentos e espaços reduzidos.',
-            imagens: [
-                'assets/img/produtos/aluminio/compacto-frente.jpg',
-                'assets/img/produtos/aluminio/compacto-lateral.jpg',
-                'assets/img/produtos/aluminio/compacto-aberto.jpg',
-                'assets/img/produtos/aluminio/compacto-detalhe.jpg'
-            ],
-            especificacoes: {
-                material: 'Alumínio fundido',
-                dimensoes: '50x55x120 cm',
-                bocas: '4',
-                peso: '55kg',
-                forno: 'Incluso'
-            },
-            mensagemWhatsApp: 'Olá! Preciso de informações sobre o Fogão Alumínio Compacto.'
-        },
-        {
-            id: 'al-lorem2-gabinete',
-            nome: 'Cooktop Alumínio 4 Bocas',
-            categoria: 'Fogões Chapa de Alumínio',
-            descricao: 'Cooktop de embutir com chapa de alumínio polido. Design moderno e instalação facilitada.',
-            imagens: [
-                'assets/img/produtos/aluminio/cooktop-frente.jpg',
-                'assets/img/produtos/aluminio/cooktop-topo.jpg',
-                'assets/img/produtos/aluminio/cooktop-lateral.jpg',
-                'assets/img/produtos/aluminio/cooktop-instalado.jpg'
-            ],
-            especificacoes: {
-                material: 'Alumínio polido',
-                dimensoes: '58x50x8 cm',
-                bocas: '4',
-                peso: '12kg',
-                tipo: 'Embutir'
-            },
-            mensagemWhatsApp: 'Quero um orçamento para o Cooktop de Alumínio 4 bocas.'
-        }
-    ],
+  // ====================================
+  // CATEGORIA 2: FOGÕES ALUMÍNIO
+  // ====================================
+  "fogoes-aluminio": [
+    {
+      id: "al-loren1",
+      nome: "Fogão Loren 1 Alumínio",
+      categoria: "Fogões Chapa de Alumínio",
+      descricao:
+        "Fogão a lenha com chapa de alumínio fundido. Leve, de fácil manutenção e com excelente distribuição de calor — ideal para quem busca praticidade sem abrir mão da durabilidade.",
+      imagens: [
+        "assets/img/produtos/aluminio/al-lorem1.png",
+        "assets/img/produtos/aluminio/fogao1-lateral.jpg",
+        "assets/img/produtos/aluminio/fogao1-topo.jpg",
+        "assets/img/produtos/aluminio/fogao1-detalhe.jpg",
+      ],
+      especificacoes: {
+        Modelo: "Loren 1 Alumínio",
+        Tipo: "A lenha",
+        "Saídas da Chaminé":
+          "Atrás: lado esquerdo / Atrás: lado direito / Na chapa: lado esquerdo / Na chapa: lado direito",
+        Acabamento: "Alumínio natural com acabamento matte",
+        Chapa: "Alumínio fundido – alta resistência térmica",
+        Queimador: "Revestido com tijolos refratários de alto teor de alumina",
+        "Diâmetro da Chaminé": "Ø 150 mm",
+        "Dimensões (A x L x P)": "85 x 68 x 58 cm",
+        Peso: "38 kg",
+        Garantia: "12 meses contra defeitos de fabricação",
+      },
+      caracteristicas: [
+        "Chapa de alumínio fundido com alta resistência térmica",
+        "Menor peso em comparação às chapas de ferro — fácil movimentação",
+        "Queimador revestido com tijolos refratários de alto teor de alumina",
+        "Saída de chaminé em 4 posições configuráveis",
+        "Regulagem de entrada de ar na porta do queimador",
+        "Superfície de fácil limpeza",
+        "Puxadores resistentes ao calor",
+        "Garantia TERRIBILE de 12 meses",
+      ],
+      mensagemWhatsApp:
+        "Olá! Gostaria de informações sobre o Fogão Loren 1 de Alumínio.",
+    },
+    {
+      id: "al-loren2",
+      nome: "Fogão Loren 2 Alumínio",
+      categoria: "Fogões Chapa de Alumínio",
+      descricao:
+        "Fogão a lenha com chapa de alumínio anodizado de médio porte. Mais área de cozimento, melhor distribuição de calor e acabamento premium para cozinhas que demandam mais.",
+      imagens: [
+        "assets/img/produtos/aluminio/fogao2-frente.jpg",
+        "assets/img/produtos/aluminio/fogao2-lateral.jpg",
+        "assets/img/produtos/aluminio/fogao2-topo.jpg",
+        "assets/img/produtos/aluminio/fogao2-uso.jpg",
+      ],
+      especificacoes: {
+        Modelo: "Loren 2 Alumínio",
+        Tipo: "A lenha",
+        "Saídas da Chaminé":
+          "Atrás: lado esquerdo / Atrás: lado direito / Na chapa: lado esquerdo / Na chapa: lado direito",
+        Acabamento: "Alumínio anodizado com acabamento matte",
+        Chapa: "Alumínio anodizado – maior resistência à oxidação",
+        Queimador: "Revestido com tijolos refratários de alto teor de alumina",
+        "Diâmetro da Chaminé": "Ø 150 mm",
+        "Dimensões (A x L x P)": "85 x 92 x 61 cm",
+        Peso: "44 kg",
+        Garantia: "12 meses contra defeitos de fabricação",
+      },
+      caracteristicas: [
+        "Chapa de alumínio anodizado com maior resistência à oxidação e umidade",
+        "Maior área útil de cozimento em relação ao Loren 1",
+        "Queimador revestido com tijolos refratários de alto teor de alumina",
+        "Saída de chaminé em 4 posições configuráveis",
+        "Varão em inox para apoio de utensílios",
+        "Regulagem de entrada de ar na porta do queimador",
+        "Fácil limpeza e manutenção",
+      ],
+      mensagemWhatsApp:
+        "Preciso de um orçamento para o Fogão Loren 2 de Alumínio.",
+    },
+    {
+      id: "al-loren1-gabinete",
+      nome: "Fogão Loren 1 Alumínio com Gabinete",
+      categoria: "Fogões Chapa de Alumínio",
+      descricao:
+        "Fogão a lenha Loren 1 com chapa de alumínio fundido e gabinete integrado. Forno com interior em inox, termômetro e depósito para lenha — solução completa para cozinhas residenciais.",
+      imagens: [
+        "assets/img/produtos/aluminio/compacto-frente.jpg",
+        "assets/img/produtos/aluminio/compacto-lateral.jpg",
+        "assets/img/produtos/aluminio/compacto-aberto.jpg",
+        "assets/img/produtos/aluminio/compacto-detalhe.jpg",
+      ],
+      especificacoes: {
+        Modelo: "Loren 1 Alumínio com Gabinete",
+        Tipo: "A lenha",
+        "Saídas da Chaminé":
+          "Atrás: lado esquerdo / Atrás: lado direito / Na chapa: lado esquerdo / Na chapa: lado direito",
+        Acabamento: "Alumínio natural com acabamento matte",
+        Chapa: "Alumínio fundido – alta resistência térmica",
+        Forno: "Interior em inox com termômetro analógico até 350 °C",
+        Queimador: "Revestido com tijolos refratários de alto teor de alumina",
+        "Diâmetro da Chaminé": "Ø 150 mm",
+        "Dimensões (A x L x P)": "130 x 68 x 58 cm",
+        Peso: "55 kg",
+      },
+      caracteristicas: [
+        "Chapa de alumínio fundido com alta resistência térmica",
+        "Forno com interior em inox e termômetro analógico até 350 °C",
+        "Forno com aquecimento envolvente para assar com uniformidade",
+        "Queimador revestido com tijolos refratários de alto teor de alumina",
+        "Depósito para lenha no gabinete inferior",
+        "Saída de chaminé em 4 posições configuráveis",
+        "Puxadores resistentes ao calor",
+      ],
+      mensagemWhatsApp:
+        "Olá! Preciso de informações sobre o Fogão Loren 1 Alumínio com Gabinete.",
+    },
+    {
+      id: "al-loren2-gabinete",
+      nome: "Fogão Loren 2 Alumínio com Gabinete",
+      categoria: "Fogões Chapa de Alumínio",
+      descricao:
+        "Fogão a lenha Loren 2 com chapa de alumínio anodizado e gabinete completo. A opção mais robusta da linha alumínio — ideal para quem precisa de mais espaço e capacidade de forno.",
+      imagens: [
+        "assets/img/produtos/aluminio/cooktop-frente.jpg",
+        "assets/img/produtos/aluminio/cooktop-topo.jpg",
+        "assets/img/produtos/aluminio/cooktop-lateral.jpg",
+        "assets/img/produtos/aluminio/cooktop-instalado.jpg",
+      ],
+      especificacoes: {
+        Modelo: "Loren 2 Alumínio com Gabinete",
+        Tipo: "A lenha",
+        "Saídas da Chaminé":
+          "Atrás: lado esquerdo / Atrás: lado direito / Na chapa: lado esquerdo / Na chapa: lado direito",
+        Acabamento: "Alumínio anodizado com acabamento matte",
+        Chapa: "Alumínio anodizado – maior resistência à oxidação",
+        Forno: "Interior em inox com termômetro analógico até 350 °C",
+        Queimador: "Revestido com tijolos refratários de alto teor de alumina",
+        "Diâmetro da Chaminé": "Ø 150 mm",
+        "Dimensões (A x L x P)": "130 x 92 x 61 cm",
+        Peso: "65 kg",
+      },
+      caracteristicas: [
+        "Chapa de alumínio anodizado com maior área útil de cozimento",
+        "Forno com interior em inox e termômetro analógico até 350 °C",
+        "Forno com aquecimento envolvente para resultados uniformes",
+        "Queimador revestido com tijolos refratários de alto teor de alumina",
+        "Depósito para lenha no gabinete inferior",
+        "Varão em inox para apoio de utensílios",
+        "Saída de chaminé em 4 posições configuráveis",
+      ],
+      mensagemWhatsApp:
+        "Quero um orçamento para o Fogão Loren 2 Alumínio com Gabinete.",
+    },
+  ],
 
-    // ====================================
-    // CATEGORIA 3: FOGÕES FERRO
-    // ====================================
-    'fogoes-ferro': [
-        {
-            id: 'fe-lorem1',
-            nome: 'Fogão Ferro Fundido 4 Bocas',
-            categoria: 'Fogões Chapa de Ferro',
-            descricao: 'Fogão tradicional com chapa de ferro fundido ultra resistente. Máxima durabilidade e distribuição uniforme de calor.',
-            imagens: [
-                'assets/img/produtos/ferro/fogao1-frente.jpg',
-                'assets/img/produtos/ferro/fogao1-lateral.jpg',
-                'assets/img/produtos/ferro/fogao1-topo.jpg',
-                'assets/img/produtos/ferro/fogao1-detalhe.jpg'
-            ],
-            especificacoes: {
-                material: 'Ferro fundido',
-                dimensoes: '60x60x90 cm',
-                bocas: '4',
-                peso: '68kg'
-            },
-            mensagemWhatsApp: 'Olá! Gostaria de informações sobre o Fogão de Ferro Fundido 4 bocas.'
-        },
-        {
-            id: 'fe-lorem2',
-            nome: 'Fogão Ferro Fundido 6 Bocas',
-            categoria: 'Fogões Chapa de Ferro',
-            descricao: 'Fogão industrial com chapa de ferro fundido de alta durabilidade. Ideal para uso comercial intenso.',
-            imagens: [
-                'assets/img/produtos/ferro/fogao2-frente.jpg',
-                'assets/img/produtos/ferro/fogao2-lateral.jpg',
-                'assets/img/produtos/ferro/fogao2-topo.jpg',
-                'assets/img/produtos/ferro/fogao2-uso.jpg'
-            ],
-            especificacoes: {
-                material: 'Ferro fundido industrial',
-                dimensoes: '90x80x90 cm',
-                bocas: '6',
-                peso: '95kg'
-            },
-            mensagemWhatsApp: 'Preciso de um orçamento para o Fogão de Ferro Fundido 6 bocas.'
-        },
-        {
-            id: 'fe-lorem3',
-            nome: 'Fogão Industrial Ferro 8 Bocas',
-            categoria: 'Fogões Chapa de Ferro',
-            descricao: 'Fogão industrial grande porte com chapa de ferro extra reforçada. Perfeito para grandes cozinhas comerciais.',
-            imagens: [
-                'assets/img/produtos/ferro/industrial-frente.jpg',
-                'assets/img/produtos/ferro/industrial-lateral.jpg',
-                'assets/img/produtos/ferro/industrial-topo.jpg',
-                'assets/img/produtos/ferro/industrial-restaurante.jpg'
-            ],
-            especificacoes: {
-                material: 'Ferro fundido extra reforçado',
-                dimensoes: '120x90x95 cm',
-                bocas: '8',
-                peso: '135kg'
-            },
-            mensagemWhatsApp: 'Gostaria de saber sobre o Fogão Industrial de Ferro 8 bocas.'
-        },
-        {
-            id: 'fe-lorem1-gabinete',
-            nome: 'Fogão Ferro à Lenha',
-            categoria: 'Fogões Chapa de Ferro',
-            descricao: 'Fogão tradicional à lenha com chapa de ferro fundido. Resgata a tradição com eficiência moderna.',
-            imagens: [
-                'assets/img/produtos/ferro/lenha-frente.jpg',
-                'assets/img/produtos/ferro/lenha-lateral.jpg',
-                'assets/img/produtos/ferro/lenha-aberto.jpg',
-                'assets/img/produtos/ferro/lenha-aceso.jpg'
-            ],
-            especificacoes: {
-                material: 'Ferro fundido',
-                dimensoes: '80x70x100 cm',
-                bocas: '4',
-                peso: '125kg',
-                combustivel: 'Lenha'
-            },
-            mensagemWhatsApp: 'Olá! Quero informações sobre o Fogão de Ferro à Lenha.'
-        },
-        {
-            id: 'fe-lorem2-gabinete',
-            nome: 'Fogão Ferro Comercial',
-            categoria: 'Fogões Chapa de Ferro',
-            descricao: 'Fogão para uso comercial com chapa de ferro industrial. Resistência máxima para uso contínuo.',
-            imagens: [
-                'assets/img/produtos/ferro/comercial-frente.jpg',
-                'assets/img/produtos/ferro/comercial-lateral.jpg',
-                'assets/img/produtos/ferro/comercial-detalhe.jpg',
-                'assets/img/produtos/ferro/comercial-cozinha.jpg'
-            ],
-            especificacoes: {
-                material: 'Ferro industrial',
-                dimensoes: '100x80x90 cm',
-                bocas: '6',
-                peso: '110kg',
-                uso: 'Comercial'
-            },
-            mensagemWhatsApp: 'Preciso de detalhes sobre o Fogão de Ferro Comercial.'
-        },
-        {
-            id: 'fe-lorem3-gabinete',
-            nome: 'Fogão Ferro Para Restaurante',
-            categoria: 'Fogões Chapa de Ferro',
-            descricao: 'Fogão profissional para restaurantes com chapa de ferro de alta performance. Design robusto e funcional.',
-            imagens: [
-                'assets/img/produtos/ferro/restaurante-frente.jpg',
-                'assets/img/produtos/ferro/restaurante-lateral.jpg',
-                'assets/img/produtos/ferro/restaurante-topo.jpg',
-                'assets/img/produtos/ferro/restaurante-uso.jpg'
-            ],
-            especificacoes: {
-                material: 'Ferro fundido profissional',
-                dimensoes: '150x100x95 cm',
-                bocas: '10',
-                peso: '180kg',
-                uso: 'Profissional'
-            },
-            mensagemWhatsApp: 'Gostaria de um orçamento para o Fogão de Ferro Para Restaurante.'
-        }
-    ],
+  // ====================================
+  // CATEGORIA 3: FOGÕES FERRO
+  // ====================================
+  "fogoes-ferro": [
+    {
+      id: "fe-loren1",
+      nome: "Fogão Loren 1 Ferro Fundido",
+      categoria: "Fogões Chapa de Ferro",
+      descricao:
+        "Fogão a lenha com chapa de ferro fundido — máxima durabilidade, inércia térmica superior e aquecimento uniforme. A escolha clássica para quem valoriza tradição e resistência.",
+      imagens: [
+        "assets/img/produtos/ferro/fogao1-frente.jpg",
+        "assets/img/produtos/ferro/fogao1-lateral.jpg",
+        "assets/img/produtos/ferro/fogao1-topo.jpg",
+        "assets/img/produtos/ferro/fogao1-detalhe.jpg",
+      ],
+      especificacoes: {
+        Modelo: "Loren 1 Ferro Fundido",
+        Tipo: "A lenha",
+        "Saídas da Chaminé":
+          "Atrás: lado esquerdo / Atrás: lado direito / Na chapa: lado esquerdo / Na chapa: lado direito",
+        Acabamento: "Preto fosco resistente a altas temperaturas",
+        Chapa: "Ferro fundido maciço – alta inércia térmica",
+        Queimador: "Revestido com tijolos refratários de alto teor de alumina",
+        "Diâmetro da Chaminé": "Ø 150 mm",
+        "Dimensões (A x L x P)": "85 x 70 x 60 cm",
+        Peso: "68 kg",
+      },
+      caracteristicas: [
+        "Chapa de ferro fundido maciço com alta inércia térmica",
+        "Aquecimento uniforme — mantém o calor por mais tempo",
+        "Queimador revestido com tijolos refratários de alto teor de alumina",
+        "Acabamento preto fosco resistente a altas temperaturas",
+        "Saída de chaminé em 4 posições configuráveis",
+        "Regulagem de entrada de ar na porta do queimador",
+        "Construção robusta para uso intenso e duradouro",
+      ],
+      mensagemWhatsApp:
+        "Olá! Gostaria de informações sobre o Fogão Loren 1 de Ferro Fundido.",
+    },
+    {
+      id: "fe-loren2",
+      nome: "Fogão Loren 2 Ferro Fundido",
+      categoria: "Fogões Chapa de Ferro",
+      descricao:
+        "Fogão a lenha Loren 2 com chapa de ferro fundido de médio porte. Maior superfície de cozimento, potência de aquecimento superior e construção reforçada para uso residencial e comercial.",
+      imagens: [
+        "assets/img/produtos/ferro/fogao2-frente.jpg",
+        "assets/img/produtos/ferro/fogao2-lateral.jpg",
+        "assets/img/produtos/ferro/fogao2-topo.jpg",
+        "assets/img/produtos/ferro/fogao2-uso.jpg",
+      ],
+      especificacoes: {
+        Modelo: "Loren 2 Ferro Fundido",
+        Tipo: "A lenha",
+        "Saídas da Chaminé":
+          "Atrás: lado esquerdo / Atrás: lado direito / Na chapa: lado esquerdo / Na chapa: lado direito",
+        Acabamento: "Preto fosco resistente a altas temperaturas",
+        Chapa: "Ferro fundido maciço – alta inércia térmica",
+        Queimador:
+          "Câmara ampliada revestida com tijolos refratários de alto teor de alumina",
+        "Diâmetro da Chaminé": "Ø 150 mm",
+        "Dimensões (A x L x P)": "87 x 92 x 78 cm",
+        Peso: "95 kg",
+      },
+      caracteristicas: [
+        "Chapa de ferro fundido maciço com maior área útil de cozimento",
+        "Alta inércia térmica — aquece com eficiência e retém o calor",
+        "Câmara de combustão ampliada para uso mais intenso",
+        "Queimador revestido com tijolos refratários de alto teor de alumina",
+        "Saída de chaminé em 4 posições configuráveis",
+        "Varão em inox para apoio de utensílios",
+        "Regulagem de entrada de ar na porta do queimador",
+      ],
+      mensagemWhatsApp:
+        "Preciso de um orçamento para o Fogão Loren 2 de Ferro Fundido.",
+    },
+    {
+      id: "fe-loren3",
+      nome: "Fogão Loren 3 Ferro Fundido",
+      categoria: "Fogões Chapa de Ferro",
+      descricao:
+        "O maior fogão a lenha da linha ferro da TERRIBILE. Câmara de combustão extra reforçada, chapa de ferro de alta espessura e capacidade para atender grandes volumes — perfeito para cozinhas profissionais.",
+      imagens: [
+        "assets/img/produtos/ferro/industrial-frente.jpg",
+        "assets/img/produtos/ferro/industrial-lateral.jpg",
+        "assets/img/produtos/ferro/industrial-topo.jpg",
+        "assets/img/produtos/ferro/industrial-restaurante.jpg",
+      ],
+      especificacoes: {
+        Modelo: "Loren 3 Ferro Fundido",
+        Tipo: "A lenha",
+        "Saídas da Chaminé":
+          "Atrás: lado esquerdo / Atrás: lado direito / Na chapa: lado esquerdo / Na chapa: lado direito",
+        Acabamento: "Preto fosco resistente a altas temperaturas",
+        Chapa: "Ferro fundido extra reforçado – alta espessura",
+        Queimador:
+          "Câmara extra reforçada com tijolos refratários de alto teor de alumina",
+        "Diâmetro da Chaminé": "Ø 200 mm",
+        "Dimensões (A x L x P)": "90 x 125 x 93 cm",
+        Peso: "135 kg",
+      },
+      caracteristicas: [
+        "Chapa de ferro fundido extra reforçado de alta espessura",
+        "Câmara de combustão extra reforçada para uso de alta demanda",
+        "Queimador com tijolos refratários de alto teor de alumina",
+        "Suporta panelas industriais e grande quantidade de alimentos",
+        "Saída de chaminé em 4 posições configuráveis",
+        "Construção robusta para uso comercial e profissional contínuo",
+        "Alta inércia térmica — aquecimento potente e duradouro",
+      ],
+      mensagemWhatsApp:
+        "Gostaria de saber sobre o Fogão Loren 3 de Ferro Fundido.",
+    },
+    {
+      id: "fe-loren1-gabinete",
+      nome: "Fogão Loren 1 Ferro com Gabinete",
+      categoria: "Fogões Chapa de Ferro",
+      descricao:
+        "Fogão a lenha Loren 1 com chapa de ferro fundido e gabinete completo. Forno em inox com termômetro, depósito para lenha e acabamento robusto — tradição e praticidade em um só produto.",
+      imagens: [
+        "assets/img/produtos/ferro/fe-lorem2-gabinete.png",
+        "assets/img/produtos/ferro/lenha-lateral.jpg",
+        "assets/img/produtos/ferro/lenha-aberto.jpg",
+        "assets/img/produtos/ferro/lenha-aceso.jpg",
+      ],
+      especificacoes: {
+        Modelo: "Loren 1 Ferro com Gabinete",
+        Tipo: "A lenha",
+        "Saídas da Chaminé":
+          "Atrás: lado esquerdo / Atrás: lado direito / Na chapa: lado esquerdo / Na chapa: lado direito",
+        Acabamento: "Preto fosco resistente a altas temperaturas",
+        Chapa: "Ferro fundido maciço – alta inércia térmica",
+        Forno: "Interior em inox com termômetro analógico até 350 °C",
+        Queimador: "Revestido com tijolos refratários de alto teor de alumina",
+        "Diâmetro da Chaminé": "Ø 150 mm",
+        "Dimensões (A x L x P)": "135 x 70 x 60 cm",
+        Peso: "125 kg",
+      },
+      caracteristicas: [
+        "Chapa de ferro fundido maciço com alta inércia térmica",
+        "Forno com interior em inox e termômetro analógico até 350 °C",
+        "Forno com aquecimento envolvente para assados uniformes",
+        "Queimador revestido com tijolos refratários de alto teor de alumina",
+        "Depósito para lenha no gabinete inferior",
+        "Puxadores cerâmicos e varão em inox",
+        "Saída de chaminé em 4 posições configuráveis",
+      ],
+      mensagemWhatsApp:
+        "Olá! Quero informações sobre o Fogão Loren 1 de Ferro com Gabinete.",
+    },
+    {
+      id: "fe-loren2-gabinete",
+      nome: "Fogão Loren 2 Ferro com Gabinete",
+      categoria: "Fogões Chapa de Ferro",
+      descricao:
+        "Fogão a lenha Loren 2 com chapa de ferro fundido e gabinete de médio porte. Maior capacidade de forno, câmara de combustão ampliada e resistência para uso comercial intenso.",
+      imagens: [
+        "assets/img/produtos/ferro/comercial-frente.jpg",
+        "assets/img/produtos/ferro/comercial-lateral.jpg",
+        "assets/img/produtos/ferro/comercial-detalhe.jpg",
+        "assets/img/produtos/ferro/comercial-cozinha.jpg",
+      ],
+      especificacoes: {
+        Modelo: "Loren 2 Ferro com Gabinete",
+        Tipo: "A lenha",
+        "Saídas da Chaminé":
+          "Atrás: lado esquerdo / Atrás: lado direito / Na chapa: lado esquerdo / Na chapa: lado direito",
+        Acabamento: "Preto fosco resistente a altas temperaturas",
+        Chapa: "Ferro fundido maciço – alta inércia térmica",
+        Forno: "Interior em inox com termômetro analógico até 350 °C",
+        Queimador:
+          "Câmara ampliada revestida com tijolos refratários de alto teor de alumina",
+        "Diâmetro da Chaminé": "Ø 150 mm",
+        "Dimensões (A x L x P)": "137 x 92 x 78 cm",
+        Peso: "155 kg",
+      },
+      caracteristicas: [
+        "Chapa de ferro fundido com maior área útil de cozimento",
+        "Forno amplo com interior em inox e termômetro analógico até 350 °C",
+        "Forno com aquecimento envolvente para uso comercial",
+        "Câmara de combustão ampliada para alta demanda",
+        "Depósito para lenha no gabinete inferior",
+        "Saída de chaminé em 4 posições configuráveis",
+        "Puxadores cerâmicos e varão em inox",
+      ],
+      mensagemWhatsApp:
+        "Preciso de detalhes sobre o Fogão Loren 2 de Ferro com Gabinete.",
+    },
+    {
+      id: "fe-loren3-gabinete",
+      nome: "Fogão Loren 3 Ferro com Gabinete",
+      categoria: "Fogões Chapa de Ferro",
+      descricao:
+        "O topo da linha ferro TERRIBILE. Fogão a lenha de grande porte com chapa de ferro extra reforçada, forno duplo em inox e gabinete profissional — desenvolvido para cozinhas de alta performance.",
+      imagens: [
+        "assets/img/produtos/ferro/restaurante-frente.jpg",
+        "assets/img/produtos/ferro/restaurante-lateral.jpg",
+        "assets/img/produtos/ferro/restaurante-topo.jpg",
+        "assets/img/produtos/ferro/restaurante-uso.jpg",
+      ],
+      especificacoes: {
+        Modelo: "Loren 3 Ferro com Gabinete",
+        Tipo: "A lenha",
+        "Saídas da Chaminé":
+          "Atrás: lado esquerdo / Atrás: lado direito / Na chapa: lado esquerdo / Na chapa: lado direito",
+        Acabamento: "Preto fosco resistente a altas temperaturas",
+        Chapa: "Ferro fundido extra reforçado – alta espessura",
+        Forno:
+          "Interior em inox com termômetro analógico até 350 °C — forno duplo",
+        Queimador:
+          "Câmara extra reforçada com tijolos refratários de alto teor de alumina",
+        "Diâmetro da Chaminé": "Ø 200 mm",
+        "Dimensões (A x L x P)": "140 x 125 x 93 cm",
+        Peso: "210 kg",
+      },
+      caracteristicas: [
+        "Chapa de ferro fundido extra reforçado de alta espessura",
+        "Forno duplo com interior em inox e termômetro analógico até 350 °C",
+        "Câmara de combustão extra reforçada para uso profissional contínuo",
+        "Aquecimento envolvente nos dois fornos para resultados profissionais",
+        "Depósito para lenha no gabinete inferior",
+        "Saída de chaminé em 4 posições configuráveis",
+        "Puxadores cerâmicos e varão em inox",
+      ],
+      mensagemWhatsApp:
+        "Gostaria de um orçamento para o Fogão Loren 3 de Ferro com Gabinete.",
+    },
+  ],
 
-    // ====================================
-    // CATEGORIA 4: FOGÕES ESPECIAIS
-    // ====================================
-    'fogoes-especiais': [
-        {
-            id: 'fogao-industrial-10bocas',
-            nome: 'Fogão Industrial 10 Bocas',
-            categoria: 'Fogões Industriais Especiais',
-            descricao: 'Fogão industrial de grande capacidade com 10 queimadores de alta potência. Solução completa para grandes volumes.',
-            imagens: [
-                'assets/img/produtos/especiais/10bocas-frente.jpg',
-                'assets/img/produtos/especiais/10bocas-lateral.jpg',
-                'assets/img/produtos/especiais/10bocas-topo.jpg',
-                'assets/img/produtos/especiais/10bocas-cozinha.jpg'
-            ],
-            especificacoes: {
-                material: 'Aço industrial reforçado',
-                dimensoes: '180x100x95 cm',
-                bocas: '10',
-                peso: '220kg',
-                potencia: 'Alta'
-            },
-            mensagemWhatsApp: 'Olá! Preciso de informações sobre o Fogão Industrial 10 bocas.'
-        }
-    ],
+  // ====================================
+  // CATEGORIA 4: FOGÕES CAMPEIROS
+  // ====================================
+  "fogoes-campeiros": [
+    {
+      id: "camp-loren1",
+      nome: "Fogão Campeiro Loren 1",
+      categoria: "Fogões Campeiros",
+      descricao:
+        "Fogão campeiro a lenha Loren 1, compacto e resistente. Projetado para uso ao ar livre, ranchos, galpões e cozinhas rurais — onde o calor da lenha é tradição.",
+      imagens: [
+        "assets/img/produtos/campeiro/camp-loren1-frente.jpg",
+        "assets/img/produtos/campeiro/camp-loren1-lateral.jpg",
+        "assets/img/produtos/campeiro/camp-loren1-topo.jpg",
+        "assets/img/produtos/campeiro/camp-loren1-detalhe.jpg",
+      ],
+      especificacoes: {
+        Modelo: "Campeiro Loren 1",
+        Tipo: "A lenha",
+        "Saídas da Chaminé":
+          "Atrás: lado esquerdo / Atrás: lado direito / Na chapa: lado esquerdo / Na chapa: lado direito",
+        Acabamento: "Preto fosco resistente a intempéries",
+        Chapa: "Ferro fundido maciço",
+        Queimador:
+          "Câmara aberta de alta capacidade com grelha em ferro fundido",
+        "Diâmetro da Chaminé": "Ø 150 mm",
+        "Dimensões (A x L x P)": "80 x 65 x 52 cm",
+        Peso: "55 kg",
+      },
+      caracteristicas: [
+        "Chapa de ferro fundido maciço de alta resistência",
+        "Câmara aberta de alta capacidade com grelha em ferro fundido",
+        "Acabamento preto fosco resistente a intempéries e variações de temperatura",
+        "Saída de chaminé em 4 posições configuráveis",
+        "Regulagem de entrada de ar para controle da chama",
+        "Pés reforçados para superfícies irregulares",
+        "Construção robusta para uso ao ar livre e em ambientes rurais",
+      ],
+      mensagemWhatsApp:
+        "Olá! Gostaria de informações sobre o Fogão Campeiro Loren 1.",
+    },
+    {
+      id: "camp-loren2",
+      nome: "Fogão Campeiro Loren 2",
+      categoria: "Fogões Campeiros",
+      descricao:
+        "Fogão campeiro a lenha Loren 2 de médio porte. Mais espaço de cozimento para churrascos, eventos em propriedades rurais e cozinhas de rancho que recebem muita gente.",
+      imagens: [
+        "assets/img/produtos/campeiro/camp-loren2-frente.jpg",
+        "assets/img/produtos/campeiro/camp-loren2-lateral.jpg",
+        "assets/img/produtos/campeiro/camp-loren2-topo.jpg",
+        "assets/img/produtos/campeiro/camp-loren2-detalhe.jpg",
+      ],
+      especificacoes: {
+        Modelo: "Campeiro Loren 2",
+        Tipo: "A lenha",
+        "Saídas da Chaminé":
+          "Atrás: lado esquerdo / Atrás: lado direito / Na chapa: lado esquerdo / Na chapa: lado direito",
+        Acabamento: "Preto fosco resistente a intempéries",
+        Chapa: "Ferro fundido maciço – espessura reforçada",
+        Queimador: "Câmara ampliada com grelha em ferro fundido",
+        "Diâmetro da Chaminé": "Ø 150 mm",
+        "Dimensões (A x L x P)": "83 x 85 x 62 cm",
+        Peso: "72 kg",
+      },
+      caracteristicas: [
+        "Chapa de ferro fundido maciço com espessura reforçada",
+        "Câmara ampliada para maior volume de lenha e calor",
+        "Grelha interna em ferro fundido de alta resistência",
+        "Acabamento preto fosco resistente a intempéries",
+        "Saída de chaminé em 4 posições configuráveis",
+        "Regulagem de entrada de ar para controle preciso da chama",
+        "Pés reforçados para estabilidade em qualquer superfície",
+      ],
+      mensagemWhatsApp:
+        "Preciso de um orçamento para o Fogão Campeiro Loren 2.",
+    },
+    {
+      id: "camp-loren3",
+      nome: "Fogão Campeiro Loren 3",
+      categoria: "Fogões Campeiros",
+      descricao:
+        "O maior fogão campeiro da linha TERRIBILE. Loren 3 com chapa de ferro fundido reforçada e câmara de combustão extra ampla — ideal para grandes eventos, rodeios e cozinhas rurais de alto volume.",
+      imagens: [
+        "assets/img/produtos/campeiro/camp-loren3-frente.jpg",
+        "assets/img/produtos/campeiro/camp-loren3-lateral.jpg",
+        "assets/img/produtos/campeiro/camp-loren3-topo.jpg",
+        "assets/img/produtos/campeiro/camp-loren3-detalhe.jpg",
+      ],
+      especificacoes: {
+        Modelo: "Campeiro Loren 3",
+        Tipo: "A lenha",
+        "Saídas da Chaminé":
+          "Atrás: lado esquerdo / Atrás: lado direito / Na chapa: lado esquerdo / Na chapa: lado direito",
+        Acabamento: "Preto fosco resistente a intempéries",
+        Chapa: "Ferro fundido reforçado – alta espessura",
+        Queimador: "Câmara extra ampla com grelha em ferro fundido reforçado",
+        "Diâmetro da Chaminé": "Ø 200 mm",
+        "Dimensões (A x L x P)": "87 x 105 x 72 cm",
+        Peso: "95 kg",
+      },
+      caracteristicas: [
+        "Chapa de ferro fundido reforçado de alta espessura",
+        "Câmara de combustão extra ampla para alto volume de produção",
+        "Grelha interna em ferro fundido reforçado",
+        "Suporta panelões, tachos e recipientes de grande porte",
+        "Saída de chaminé em 4 posições configuráveis",
+        "Regulagem de entrada de ar para controle total da chama",
+        "Pés extra reforçados para estabilidade em qualquer terreno",
+      ],
+      mensagemWhatsApp: "Gostaria de saber sobre o Fogão Campeiro Loren 3.",
+    },
+  ],
 
-    // ====================================
-    // CATEGORIA 5: ACESSÓRIOS E PEÇAS
-    // ====================================
-    'acessorios': [
-        {
-            id: 'trempe-ferro-fundido',
-            nome: 'Trempe Ferro Fundido',
-            categoria: 'Acessórios e Peças',
-            descricao: 'Trempe em ferro fundido maciço para apoio seguro de panelas. Alta resistência e durabilidade.',
-            imagens: [
-                'assets/img/produtos/acessorios/trempe-frente.jpg',
-                'assets/img/produtos/acessorios/trempe-lateral.jpg',
-                'assets/img/produtos/acessorios/trempe-detalhe.jpg',
-                'assets/img/produtos/acessorios/trempe-uso.jpg'
-            ],
-            especificacoes: {
-                material: 'Ferro fundido',
-                dimensoes: '25x25x2 cm',
-                peso: '2kg'
-            },
-            mensagemWhatsApp: 'Olá! Gostaria de informações sobre a Trempe de Ferro Fundido.'
-        },
-        {
-            id: 'tampa-queimador',
-            nome: 'Tampa para Queimador',
-            categoria: 'Acessórios e Peças',
-            descricao: 'Tampa protetora em alumínio para queimadores industriais. Facilita limpeza e manutenção.',
-            imagens: [
-                'assets/img/produtos/acessorios/tampa-frente.jpg',
-                'assets/img/produtos/acessorios/tampa-lateral.jpg',
-                'assets/img/produtos/acessorios/tampa-aberta.jpg',
-                'assets/img/produtos/acessorios/tampa-fogao.jpg'
-            ],
-            especificacoes: {
-                material: 'Alumínio',
-                dimensoes: '12x12x3 cm',
-                peso: '0.3kg'
-            },
-            mensagemWhatsApp: 'Preciso de um orçamento para Tampa de Queimador.'
-        },
-        {
-            id: 'valvula-seguranca',
-            nome: 'Válvula de Segurança',
-            categoria: 'Acessórios e Peças',
-            descricao: 'Válvula de segurança certificada para fogões a gás. Proteção contra vazamentos.',
-            imagens: [
-                'assets/img/produtos/acessorios/valvula-frente.jpg',
-                'assets/img/produtos/acessorios/valvula-lateral.jpg',
-                'assets/img/produtos/acessorios/valvula-detalhe.jpg',
-                'assets/img/produtos/acessorios/valvula-instalada.jpg'
-            ],
-            especificacoes: {
-                material: 'Latão cromado',
-                tipo: 'Corte automático',
-                pressao: 'Alta'
-            },
-            mensagemWhatsApp: 'Gostaria de saber sobre a Válvula de Segurança.'
-        },
-        {
-            id: 'acendedor-automatico',
-            nome: 'Acendedor Automático',
-            categoria: 'Acessórios e Peças',
-            descricao: 'Sistema de acendimento automático por centelha. Praticidade e segurança no dia a dia.',
-            imagens: [
-                'assets/img/produtos/acessorios/acendedor-frente.jpg',
-                'assets/img/produtos/acessorios/acendedor-detalhe.jpg',
-                'assets/img/produtos/acessorios/acendedor-instalado.jpg',
-                'assets/img/produtos/acessorios/acendedor-uso.jpg'
-            ],
-            especificacoes: {
-                tipo: 'Piezoelétrico',
-                voltagem: '110/220V',
-                garantia: '1 ano'
-            },
-            mensagemWhatsApp: 'Olá! Quero informações sobre o Acendedor Automático.'
-        },
-        {
-            id: 'regulador-gas',
-            nome: 'Regulador de Gás Industrial',
-            categoria: 'Acessórios e Peças',
-            descricao: 'Regulador de pressão de gás profissional. Controle preciso para instalações industriais.',
-            imagens: [
-                'assets/img/produtos/acessorios/regulador-frente.jpg',
-                'assets/img/produtos/acessorios/regulador-lateral.jpg',
-                'assets/img/produtos/acessorios/regulador-detalhe.jpg',
-                'assets/img/produtos/acessorios/regulador-instalado.jpg'
-            ],
-            especificacoes: {
-                material: 'Latão',
-                pressao: '2,8 kPa',
-                vazao: '10 kg/h'
-            },
-            mensagemWhatsApp: 'Preciso de detalhes sobre o Regulador de Gás.'
-        },
-        {
-            id: 'mangueira-gas',
-            nome: 'Mangueira de Gás Reforçada',
-            categoria: 'Acessórios e Peças',
-            descricao: 'Mangueira de gás com malha de aço inox. Segurança máxima e durabilidade superior.',
-            imagens: [
-                'assets/img/produtos/acessorios/mangueira-frente.jpg',
-                'assets/img/produtos/acessorios/mangueira-detalhe.jpg',
-                'assets/img/produtos/acessorios/mangueira-conexao.jpg',
-                'assets/img/produtos/acessorios/mangueira-uso.jpg'
-            ],
-            especificacoes: {
-                material: 'PVC + Malha Inox',
-                comprimento: '1.5m',
-                pressao: '100 PSI'
-            },
-            mensagemWhatsApp: 'Gostaria de um orçamento para Mangueira de Gás Reforçada.'
-        },
-        {
-            id: 'botao-comando',
-            nome: 'Botão de Comando',
-            categoria: 'Acessórios e Peças',
-            descricao: 'Botão de comando ergonômico para controle preciso de chamas. Material resistente ao calor.',
-            imagens: [
-                'assets/img/produtos/acessorios/botao-frente.jpg',
-                'assets/img/produtos/acessorios/botao-lateral.jpg',
-                'assets/img/produtos/acessorios/botao-detalhe.jpg',
-                'assets/img/produtos/acessorios/botao-instalado.jpg'
-            ],
-            especificacoes: {
-                material: 'Baquelite',
-                temperatura: 'Até 200°C',
-                acabamento: 'Cromado'
-            },
-            mensagemWhatsApp: 'Olá! Quero saber sobre o Botão de Comando.'
-        },
-        {
-            id: 'puxador-forno',
-            nome: 'Puxador de Forno',
-            categoria: 'Acessórios e Peças',
-            descricao: 'Puxador em aço inox resistente ao calor para portas de forno. Design ergonômico e elegante.',
-            imagens: [
-                'assets/img/produtos/acessorios/puxador-frente.jpg',
-                'assets/img/produtos/acessorios/puxador-lateral.jpg',
-                'assets/img/produtos/acessorios/puxador-detalhe.jpg',
-                'assets/img/produtos/acessorios/puxador-porta.jpg'
-            ],
-            especificacoes: {
-                material: 'Aço inox 304',
-                comprimento: '30 cm',
-                acabamento: 'Escovado'
-            },
-            mensagemWhatsApp: 'Preciso de informações sobre o Puxador de Forno.'
-        },
-        {
-            id: 'termostato-forno',
-            nome: 'Termostato para Forno',
-            categoria: 'Acessórios e Peças',
-            descricao: 'Termostato de precisão digital para controle exato de temperatura. Faixa de 50°C a 300°C.',
-            imagens: [
-                'assets/img/produtos/acessorios/termostato-frente.jpg',
-                'assets/img/produtos/acessorios/termostato-display.jpg',
-                'assets/img/produtos/acessorios/termostato-instalado.jpg',
-                'assets/img/produtos/acessorios/termostato-uso.jpg'
-            ],
-            especificacoes: {
-                tipo: 'Digital',
-                temperatura: '50-300°C',
-                precisao: '±2°C'
-            },
-            mensagemWhatsApp: 'Gostaria de saber sobre o Termostato para Forno.'
-        },
-        {
-            id: 'vidro-porta-forno',
-            nome: 'Vidro Porta de Forno',
-            categoria: 'Acessórios e Peças',
-            descricao: 'Vidro temperado de alta resistência para porta de forno. Suporta até 400°C sem deformação.',
-            imagens: [
-                'assets/img/produtos/acessorios/vidro-frente.jpg',
-                'assets/img/produtos/acessorios/vidro-detalhe.jpg',
-                'assets/img/produtos/acessorios/vidro-instalado.jpg',
-                'assets/img/produtos/acessorios/vidro-uso.jpg'
-            ],
-            especificacoes: {
-                material: 'Vidro temperado',
-                dimensoes: '40x50 cm',
-                temperatura: 'Até 400°C'
-            },
-            mensagemWhatsApp: 'Olá! Quero informações sobre o Vidro Porta de Forno.'
-        },
-        {
-            id: 'luz-interna-forno',
-            nome: 'Luz Interna para Forno',
-            categoria: 'Acessórios e Peças',
-            descricao: 'Lâmpada especial resistente ao calor para fornos. Iluminação eficiente e durável.',
-            imagens: [
-                'assets/img/produtos/acessorios/luz-frente.jpg',
-                'assets/img/produtos/acessorios/luz-detalhe.jpg',
-                'assets/img/produtos/acessorios/luz-instalada.jpg',
-                'assets/img/produtos/acessorios/luz-acesa.jpg'
-            ],
-            especificacoes: {
-                potencia: '40W',
-                voltagem: '110/220V',
-                temperatura: 'Até 300°C'
-            },
-            mensagemWhatsApp: 'Preciso de detalhes sobre a Luz Interna para Forno.'
-        },
-        {
-            id: 'kit-manutencao',
-            nome: 'Kit Manutenção Completo',
-            categoria: 'Acessórios e Peças',
-            descricao: 'Kit completo de peças para manutenção preventiva de fogões. Inclui trempe, válvulas, mangueira e mais.',
-            imagens: [
-                'assets/img/produtos/acessorios/kit-completo.jpg',
-                'assets/img/produtos/acessorios/kit-pecas.jpg',
-                'assets/img/produtos/acessorios/kit-aberto.jpg',
-                'assets/img/produtos/acessorios/kit-uso.jpg'
-            ],
-            especificacoes: {
-                itens: '15 peças',
-                garantia: '6 meses',
-                uso: 'Manutenção completa'
-            },
-            mensagemWhatsApp: 'Gostaria de um orçamento para o Kit Manutenção Completo.'
-        }
-    ]
+  // ====================================
+  // CATEGORIA 5: ACESSÓRIOS E PEÇAS
+  // ====================================
+  acessorios: [
+    {
+      id: "trempe-ferro-fundido",
+      nome: "Trempe Ferro Fundido",
+      categoria: "Acessórios e Peças",
+      descricao:
+        "Trempe em ferro fundido maciço para apoio seguro de panelas sobre a chapa do fogão. Alta resistência a impactos e temperaturas extremas — peça fundamental para o bom uso do fogão a lenha.",
+      imagens: [
+        "assets/img/produtos/acessorios/trempe-frente.jpg",
+        "assets/img/produtos/acessorios/trempe-lateral.jpg",
+        "assets/img/produtos/acessorios/trempe-detalhe.jpg",
+        "assets/img/produtos/acessorios/trempe-uso.jpg",
+      ],
+      especificacoes: {
+        Tipo: "Trempe",
+        Material: "Ferro fundido maciço",
+        Acabamento: "Preto fosco",
+        Dimensões: "25 x 25 cm",
+        Altura: "3 cm",
+        Peso: "2 kg",
+        Compatibilidade: "Todos os fogões a lenha TERRIBILE",
+      },
+      caracteristicas: [
+        "Ferro fundido maciço de alta resistência",
+        "Suporta panelas, tachos e chaleiras de grande porte",
+        "Resistente a temperaturas extremas da chapa",
+        "Acabamento preto fosco durável",
+        "Compatible com toda a linha TERRIBILE",
+        "Peso e espessura ideais para estabilidade máxima",
+      ],
+      mensagemWhatsApp:
+        "Olá! Gostaria de informações sobre a Trempe de Ferro Fundido TERRIBILE.",
+    },
+    {
+      id: "puxador-forno",
+      nome: "Puxador de Forno Inox",
+      categoria: "Acessórios e Peças",
+      descricao:
+        "Puxador em aço inox 304 escovado para porta de forno. Design ergonômico, resistente ao calor e acabamento premium — reposição original para fogões TERRIBILE com gabinete.",
+      imagens: [
+        "assets/img/produtos/acessorios/puxador-frente.jpg",
+        "assets/img/produtos/acessorios/puxador-lateral.jpg",
+        "assets/img/produtos/acessorios/puxador-detalhe.jpg",
+        "assets/img/produtos/acessorios/puxador-porta.jpg",
+      ],
+      especificacoes: {
+        Tipo: "Puxador de Forno",
+        Material: "Aço inox 304",
+        Acabamento: "Escovado",
+        Comprimento: "30 cm",
+        "Temperatura suportada": "Até 300 °C",
+        Compatibilidade:
+          "Fogões TERRIBILE com gabinete — linhas Ferro e Alumínio",
+      },
+      caracteristicas: [
+        "Aço inox 304 escovado resistente ao calor até 300 °C",
+        "Fixação segura com parafusos incluso",
+        "Design ergonômico para abertura confortável",
+        "Acabamento premium compatível com todos os gabinetes TERRIBILE",
+        "Resistente à corrosão e à umidade da cozinha",
+      ],
+      mensagemWhatsApp:
+        "Preciso de informações sobre o Puxador de Forno Inox TERRIBILE.",
+    },
+    {
+      id: "vidro-porta-forno",
+      nome: "Visor Vitrocerâmico para Forno",
+      categoria: "Acessórios e Peças",
+      descricao:
+        "Visor em vidro vitrocerâmico temperado para porta de forno. Permite visualizar o ponto dos assados sem abrir a porta — resistente a até 400 °C e de fácil substituição.",
+      imagens: [
+        "assets/img/produtos/acessorios/vidro-frente.jpg",
+        "assets/img/produtos/acessorios/vidro-detalhe.jpg",
+        "assets/img/produtos/acessorios/vidro-instalado.jpg",
+        "assets/img/produtos/acessorios/vidro-uso.jpg",
+      ],
+      especificacoes: {
+        Tipo: "Visor de Forno",
+        Material: "Vidro vitrocerâmico temperado",
+        Espessura: "6 mm",
+        Dimensões: "40 x 50 cm",
+        "Temperatura suportada": "Até 400 °C",
+        Compatibilidade: "Fogões TERRIBILE com gabinete",
+      },
+      caracteristicas: [
+        "Vidro vitrocerâmico temperado resistente a até 400 °C",
+        "Permite visualizar o ponto dos assados sem perda de calor",
+        "Espessura de 6 mm para máxima segurança",
+        "Fácil limpeza com pano umedecido",
+        "Substituição direta sem ferramentas especiais",
+        "Compatível com toda a linha de fogões TERRIBILE com gabinete",
+      ],
+      mensagemWhatsApp:
+        "Olá! Quero informações sobre o Visor Vitrocerâmico para Forno TERRIBILE.",
+    },
+    {
+      id: "kit-manutencao",
+      nome: "Kit Manutenção Completo",
+      categoria: "Acessórios e Peças",
+      descricao:
+        "Kit completo de peças originais para manutenção preventiva de fogões a lenha TERRIBILE. Inclui as principais peças de desgaste para garantir o máximo desempenho e prolongar a vida útil do seu fogão.",
+      imagens: [
+        "assets/img/produtos/acessorios/kit-completo.jpg",
+        "assets/img/produtos/acessorios/kit-pecas.jpg",
+        "assets/img/produtos/acessorios/kit-aberto.jpg",
+        "assets/img/produtos/acessorios/kit-uso.jpg",
+      ],
+      especificacoes: {
+        Tipo: "Kit de Manutenção",
+        Conteúdo:
+          "1 Trempe ferro fundido / 1 Puxador inox / 1 Visor vitrocerâmico / Parafusos e fixadores",
+        "Peças Incluídas": "15 itens no total",
+        Compatibilidade: "Toda a linha TERRIBILE de fogões a lenha",
+      },
+      caracteristicas: [
+        "Peças 100% originais TERRIBILE",
+        "Trempe de ferro fundido inclusa",
+        "Puxador em inox 304 incluso",
+        "Visor vitrocerâmico para forno incluso",
+        "Parafusos e fixadores para instalação",
+        "Compatível com toda a linha TERRIBILE",
+        "Ideal para manutenção preventiva anual",
+      ],
+      mensagemWhatsApp:
+        "Gostaria de um orçamento para o Kit Manutenção Completo TERRIBILE.",
+    },
+  ],
 };
 
 // ========================================
 // FUNÇÕES AUXILIARES
 // ========================================
 
-/**
- * Obter todos os produtos de todas as categorias
- */
 function getAllProducts() {
-    const allProducts = [];
-    for (const categoria in produtosData) {
-        allProducts.push(...produtosData[categoria]);
-    }
-    return allProducts;
+  const allProducts = [];
+  for (const categoria in produtosData) {
+    allProducts.push(...produtosData[categoria]);
+  }
+  return allProducts;
 }
 
-/**
- * Buscar produto por ID
- */
 function getProdutoById(id) {
-    for (const categoria in produtosData) {
-        const produto = produtosData[categoria].find(p => p.id === id);
-        if (produto) return produto;
-    }
-    return null;
+  for (const categoria in produtosData) {
+    const produto = produtosData[categoria].find((p) => p.id === id);
+    if (produto) return produto;
+  }
+  return null;
 }
 
-/**
- * Buscar produtos por categoria
- */
 function getProdutosByCategoria(categoriaKey) {
-    return produtosData[categoriaKey] || [];
+  return produtosData[categoriaKey] || [];
 }
 
-/**
- * Buscar produtos por nome (search)
- */
 function searchProdutos(query) {
-    const allProducts = getAllProducts();
-    const lowerQuery = query.toLowerCase();
-    return allProducts.filter(produto => 
-        produto.nome.toLowerCase().includes(lowerQuery) ||
-        produto.descricao.toLowerCase().includes(lowerQuery) ||
-        produto.categoria.toLowerCase().includes(lowerQuery)
-    );
+  const allProducts = getAllProducts();
+  const lowerQuery = query.toLowerCase();
+  return allProducts.filter(
+    (produto) =>
+      produto.nome.toLowerCase().includes(lowerQuery) ||
+      produto.descricao.toLowerCase().includes(lowerQuery) ||
+      produto.categoria.toLowerCase().includes(lowerQuery),
+  );
 }

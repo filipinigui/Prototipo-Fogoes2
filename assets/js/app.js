@@ -186,10 +186,11 @@
   }
 
   /**
-   * Navigate to product details
+   * Navigate to product details, preserving the current page URL so the user can return
    */
   function viewProduct(id) {
-    window.location.href = "produto-detalhes.html?id=" + id;
+    var from = encodeURIComponent(window.location.href);
+    window.location.href = "produto-detalhes.html?id=" + id + "&from=" + from;
   }
 
   // Initialize when DOM is ready

@@ -29,6 +29,7 @@
       "fogoes-vitroceramica": "Vitrocerâmica",
       "fogoes-aluminio": "Alumínio",
       "fogoes-ferro": "Ferro",
+      "fogoes-campeiros": "Campeiros",
       acessorios: "Acessórios",
     };
     return map[urlKey] || null;
@@ -72,7 +73,7 @@
       '    <div class="product-card__category">' + categoryShort + "</div>",
       '    <h3 class="product-card__title">' + product.nome + "</h3>",
       '    <p class="product-card__description">' +
-        (product.descricao || "Fogão artesanal de alta qualidade.") +
+        (product.descricao || "Fogão a lenha de alta qualidade.") +
         "</p>",
       '    <div class="product-card__actions">',
       '      <button class="btn btn--view" onclick="viewProduct(\'' +

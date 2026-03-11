@@ -153,6 +153,9 @@
    * Update page with product information
    */
   function updateProductInfo(product) {
+    // Update page <title> dynamically
+    document.title = product.nome + " | TERRIBILE Fogões";
+
     // Update title
     const titleElement = document.querySelector(".product-info__title");
     if (titleElement) {
@@ -172,11 +175,49 @@
     }
 
     // Update description
-    const descriptionElement = document.querySelector(
-      ".product-info__description",
-    );
+    const descriptionElement = document.querySelector(".product-info__description");
     if (descriptionElement && product.descricao) {
       descriptionElement.textContent = product.descricao;
+    }
+
+    // Update features list dynamically from product.caracteristicas
+    if (product.caracteristicas && product.caracteristicas.length > 0) {
+      const featuresList = document.querySelector(".product-features__list");
+      if (featuresList) {
+        featuresList.innerHTML = product.caracteristicas.map(function (item) {
+          return (
+            '<li class="product-features__item">' +
+            '<i class="bi bi-check-circle-fill"></i>' +
+            "<span>" + item + "</span>" +
+            "</li>"
+          );
+        }).join("");
+      }
+    }
+
+    // Update tabs content dynamically
+    updateTabsContent(product);
+
+    // Update "Voltar" button to return to origin page (preserving filter)
+    const backBtn = document.querySelector(".product-actions .btn--secondary");
+    if (backBtn) {
+      const urlParams = new URLSearchParams(window.location.search);
+      const fromUrl = urlParams.get("from");
+      if (fromUrl) {
+        try {
+          backBtn.href = decodeURIComponent(fromUrl);
+        } catch (e) {
+          backBtn.href = "produtos.html";
+        }
+      } else {
+        backBtn.href = "produtos.html";
+      }
+    }
+
+    // Update WhatsApp button with product-specific message
+    const waBtn = document.querySelector(".product-actions .btn--primary");
+    if (waBtn && product.mensagemWhatsApp) {
+      waBtn.href = "https://wa.me/54999960180?text=" + encodeURIComponent(product.mensagemWhatsApp);
     }
 
     // Update specs if available
@@ -188,29 +229,65 @@
     if (product.imagens && product.imagens.length > 0) {
       updateGallery(product.imagens);
     } else if (product.imagem) {
-      // Backward compatibility: se tiver só 'imagem' (singular), converte para array
       updateGallery([product.imagem]);
     }
   }
 
   /**
-   * Update specifications
+   * Update the description and specs tabs content dynamically
+   */
+  function updateTabsContent(product) {
+    const tabContents = document.querySelectorAll(".product-tabs__content");
+    if (!tabContents || tabContents.length === 0) return;
+
+    // Tab 0: Descrição
+    if (tabContents[0]) {
+      var descHtml = '<h3>Sobre Este Produto</h3>';
+      descHtml += '<p>' + product.descricao + '</p>';
+
+      if (product.caracteristicas && product.caracteristicas.length > 0) {
+        descHtml += '<ul style="margin-top:1rem;padding-left:1.25rem;">';
+        product.caracteristicas.forEach(function (item) {
+          descHtml += '<li style="margin-bottom:0.4rem;">' + item + '</li>';
+        });
+        descHtml += '</ul>';
+      }
+
+      descHtml += '<p style="margin-top:1rem;">Fabricados em Aratiba-RS, nossos fogões são ideais para quem busca qualidade, funcionalidade e o calor acolhedor de um produto feito com dedicação. Todos os produtos TERRIBILE atendem às normas técnicas brasileiras e passam por testes rigorosos antes da entrega.</p>';
+      tabContents[0].innerHTML = descHtml;
+    }
+
+    // Tab 1: Especificações
+    if (tabContents[1] && product.especificacoes) {
+      var specsHtml = '<h3>Especificações Detalhadas</h3>';
+      specsHtml += '<table style="width:100%;border-collapse:collapse;">';
+      Object.entries(product.especificacoes).forEach(function (entry) {
+        specsHtml += '<tr style="border-bottom:1px solid rgba(255,255,255,0.08);">' +
+          '<td style="padding:0.6rem 0.5rem;font-weight:600;width:45%;color:var(--color-primary,#c0392b);">' + entry[0] + '</td>' +
+          '<td style="padding:0.6rem 0.5rem;">' + entry[1] + '</td>' +
+          '</tr>';
+      });
+      specsHtml += '</table>';
+      specsHtml += '<p style="margin-top:1rem;font-size:0.85rem;opacity:0.7;">Estamos em constante desenvolvimento. Nos reservamos o direito de alterar especificações sem aviso prévio.</p>';
+      tabContents[1].innerHTML = specsHtml;
+    }
+  }
+
+  /**
+   * Update specifications grid
    */
   function updateSpecs(specs) {
     const specsGrid = document.querySelector(".product-specs__grid");
     if (!specsGrid || !specs) return;
 
-    // Clear existing specs
     specsGrid.innerHTML = "";
 
-    // Add new specs
     Object.entries(specs).forEach(([key, value]) => {
       const specItem = document.createElement("div");
       specItem.className = "product-specs__item";
-      specItem.innerHTML = `
-        <span class="product-specs__label">${key}:</span>
-        <span class="product-specs__value">${value}</span>
-      `;
+      specItem.innerHTML =
+        '<span class="product-specs__label">' + key + ':</span>' +
+        '<span class="product-specs__value">' + value + '</span>';
       specsGrid.appendChild(specItem);
     });
   }
