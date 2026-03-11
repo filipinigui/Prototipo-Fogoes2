@@ -1,208 +1,181 @@
 /**
  * TERRIBILE FOGÕES - PRODUCT DETAILS
  * Product detail page functionality
+ * Compatible: Edge, Chrome, Firefox, Safari (ES5+ safe)
  */
 
 (function () {
   "use strict";
 
-  /**
-   * Product Gallery Management
-   */
-  class ProductGallery {
-    constructor(galleryElement) {
-      this.gallery = galleryElement;
-      this.images = galleryElement.querySelectorAll(".product-gallery__image");
-      this.thumbnails = galleryElement.querySelectorAll(
-        ".product-gallery__thumbnail",
-      );
-      this.currentIndex = 0;
-      this.init();
-    }
-
-    init() {
-      this.setupThumbnails();
-      this.setupNavigation();
-      this.setupKeyboard();
-    }
-
-    setupThumbnails() {
-      this.thumbnails.forEach((thumb, index) => {
-        thumb.addEventListener("click", () => this.goToSlide(index));
-      });
-    }
-
-    setupNavigation() {
-      const prevBtn = this.gallery.querySelector(
-        ".product-gallery__nav-btn--prev",
-      );
-      const nextBtn = this.gallery.querySelector(
-        ".product-gallery__nav-btn--next",
-      );
-
-      if (prevBtn) {
-        prevBtn.addEventListener("click", () => this.previousSlide());
-      }
-
-      if (nextBtn) {
-        nextBtn.addEventListener("click", () => this.nextSlide());
-      }
-    }
-
-    setupKeyboard() {
-      document.addEventListener("keydown", (e) => {
-        if (e.key === "ArrowLeft") {
-          this.previousSlide();
-        } else if (e.key === "ArrowRight") {
-          this.nextSlide();
-        }
-      });
-    }
-
-    goToSlide(index) {
-      // Remove active from all
-      this.images.forEach((img) => img.classList.remove("active"));
-      this.thumbnails.forEach((thumb) => thumb.classList.remove("active"));
-
-      // Add active to current
-      if (this.images[index]) {
-        this.images[index].classList.add("active");
-      }
-      if (this.thumbnails[index]) {
-        this.thumbnails[index].classList.add("active");
-      }
-
-      this.currentIndex = index;
-    }
-
-    nextSlide() {
-      const nextIndex = (this.currentIndex + 1) % this.images.length;
-      this.goToSlide(nextIndex);
-    }
-
-    previousSlide() {
-      const prevIndex =
-        (this.currentIndex - 1 + this.images.length) % this.images.length;
-      this.goToSlide(prevIndex);
-    }
+  // ================================================
+  // GALLERY - constructor function (Edge compatible)
+  // ================================================
+  function ProductGallery(galleryElement) {
+    this.gallery = galleryElement;
+    this.images = galleryElement.querySelectorAll(".product-gallery__image");
+    this.thumbnails = galleryElement.querySelectorAll(".product-gallery__thumbnail");
+    this.currentIndex = 0;
+    this._init();
   }
 
-  /**
-   * Product Tabs Management
-   */
-  class ProductTabs {
-    constructor(tabsElement) {
-      this.tabsElement = tabsElement;
-      this.buttons = tabsElement.querySelectorAll(".product-tabs__btn");
-      this.contents = tabsElement.querySelectorAll(".product-tabs__content");
-      this.init();
+  ProductGallery.prototype._init = function () {
+    var self = this;
+
+    // Thumbnails
+    for (var i = 0; i < this.thumbnails.length; i++) {
+      (function (index) {
+        self.thumbnails[index].addEventListener("click", function () {
+          self.goToSlide(index);
+        });
+      })(i);
     }
 
-    init() {
-      this.buttons.forEach((button, index) => {
-        button.addEventListener("click", () => this.switchTab(index));
-      });
+    // Nav buttons
+    var prevBtn = this.gallery.querySelector(".product-gallery__nav-btn--prev");
+    var nextBtn = this.gallery.querySelector(".product-gallery__nav-btn--next");
+    if (prevBtn) {
+      prevBtn.addEventListener("click", function () { self.previousSlide(); });
+    }
+    if (nextBtn) {
+      nextBtn.addEventListener("click", function () { self.nextSlide(); });
     }
 
-    switchTab(index) {
-      // Remove active from all
-      this.buttons.forEach((btn) => btn.classList.remove("active"));
-      this.contents.forEach((content) => content.classList.remove("active"));
+    // Keyboard
+    document.addEventListener("keydown", function (e) {
+      if (e.key === "ArrowLeft") { self.previousSlide(); }
+      else if (e.key === "ArrowRight") { self.nextSlide(); }
+    });
+  };
 
-      // Add active to selected
-      if (this.buttons[index]) {
-        this.buttons[index].classList.add("active");
-      }
-      if (this.contents[index]) {
-        this.contents[index].classList.add("active");
-      }
+  ProductGallery.prototype.goToSlide = function (index) {
+    for (var i = 0; i < this.images.length; i++) {
+      this.images[i].classList.remove("active");
     }
+    for (var j = 0; j < this.thumbnails.length; j++) {
+      this.thumbnails[j].classList.remove("active");
+    }
+    if (this.images[index]) { this.images[index].classList.add("active"); }
+    if (this.thumbnails[index]) { this.thumbnails[index].classList.add("active"); }
+    this.currentIndex = index;
+  };
+
+  ProductGallery.prototype.nextSlide = function () {
+    var nextIndex = (this.currentIndex + 1) % this.images.length;
+    this.goToSlide(nextIndex);
+  };
+
+  ProductGallery.prototype.previousSlide = function () {
+    var prevIndex = (this.currentIndex - 1 + this.images.length) % this.images.length;
+    this.goToSlide(prevIndex);
+  };
+
+  // ================================================
+  // TABS - constructor function (Edge compatible)
+  // ================================================
+  function ProductTabs(tabsElement) {
+    this.tabsElement = tabsElement;
+    this.buttons = tabsElement.querySelectorAll(".product-tabs__btn");
+    this.contents = tabsElement.querySelectorAll(".product-tabs__content");
+    this._init();
   }
 
-  /**
-   * Load product data from URL
-   */
+  ProductTabs.prototype._init = function () {
+    var self = this;
+    for (var i = 0; i < this.buttons.length; i++) {
+      (function (index) {
+        self.buttons[index].addEventListener("click", function () {
+          self.switchTab(index);
+        });
+      })(i);
+    }
+  };
+
+  ProductTabs.prototype.switchTab = function (index) {
+    for (var i = 0; i < this.buttons.length; i++) {
+      this.buttons[i].classList.remove("active");
+    }
+    for (var j = 0; j < this.contents.length; j++) {
+      this.contents[j].classList.remove("active");
+    }
+    if (this.buttons[index]) { this.buttons[index].classList.add("active"); }
+    if (this.contents[index]) { this.contents[index].classList.add("active"); }
+  };
+
+  // ================================================
+  // LOAD PRODUCT DATA
+  // ================================================
   function loadProductData() {
-    const urlParams = new URLSearchParams(window.location.search);
-    const productId = urlParams.get("id");
+    var urlParams = new URLSearchParams(window.location.search);
+    var productId = urlParams.get("id");
 
     if (!productId || typeof produtosData === "undefined") {
-      console.warn("Product ID not found or product data not loaded");
       return;
     }
 
-    // Find product in data
-    let product = null;
-    Object.values(produtosData).forEach((category) => {
-      const found = category.find((p) => p.id === productId);
-      if (found) {
-        product = found;
+    var product = null;
+    var categories = Object.keys(produtosData);
+    for (var c = 0; c < categories.length; c++) {
+      var category = produtosData[categories[c]];
+      for (var p = 0; p < category.length; p++) {
+        if (category[p].id === productId) {
+          product = category[p];
+          break;
+        }
       }
-    });
-
-    if (!product) {
-      console.warn("Product not found:", productId);
-      return;
+      if (product) break;
     }
 
-    // Update page with product data
+    if (!product) return;
+
     updateProductInfo(product);
   }
 
-  /**
-   * Update page with product information
-   */
+  // ================================================
+  // UPDATE PRODUCT INFO
+  // ================================================
   function updateProductInfo(product) {
-    // Update page <title> dynamically
+    // Page title
     document.title = product.nome + " | TERRIBILE Fogões";
 
-    // Update title
-    const titleElement = document.querySelector(".product-info__title");
-    if (titleElement) {
-      titleElement.textContent = product.nome;
-    }
+    // Product title
+    var titleEl = document.querySelector(".product-info__title");
+    if (titleEl) { titleEl.textContent = product.nome; }
 
-    // Update breadcrumb
-    const breadcrumbProduct = document.querySelector(".breadcrumb-item.active");
-    if (breadcrumbProduct) {
-      breadcrumbProduct.textContent = product.nome;
-    }
+    // Breadcrumb
+    var breadcrumb = document.querySelector(".breadcrumb-item.active");
+    if (breadcrumb) { breadcrumb.textContent = product.nome; }
 
-    // Update category
-    const categoryElement = document.querySelector(".product-info__category");
-    if (categoryElement) {
-      categoryElement.textContent = product.categoria;
-    }
+    // Category
+    var categoryEl = document.querySelector(".product-info__category");
+    if (categoryEl) { categoryEl.textContent = product.categoria; }
 
-    // Update description
-    const descriptionElement = document.querySelector(".product-info__description");
-    if (descriptionElement && product.descricao) {
-      descriptionElement.textContent = product.descricao;
-    }
+    // Description
+    var descEl = document.querySelector(".product-info__description");
+    if (descEl && product.descricao) { descEl.textContent = product.descricao; }
 
-    // Update features list dynamically from product.caracteristicas
+    // Features list
     if (product.caracteristicas && product.caracteristicas.length > 0) {
-      const featuresList = document.querySelector(".product-features__list");
+      var featuresList = document.querySelector(".product-features__list");
       if (featuresList) {
-        featuresList.innerHTML = product.caracteristicas.map(function (item) {
-          return (
-            '<li class="product-features__item">' +
+        var html = "";
+        for (var i = 0; i < product.caracteristicas.length; i++) {
+          html += '<li class="product-features__item">' +
             '<i class="bi bi-check-circle-fill"></i>' +
-            "<span>" + item + "</span>" +
-            "</li>"
-          );
-        }).join("");
+            "<span>" + product.caracteristicas[i] + "</span>" +
+            "</li>";
+        }
+        featuresList.innerHTML = html;
       }
     }
 
-    // Update tabs content dynamically
+    // Tabs content
     updateTabsContent(product);
 
-    // Update "Voltar" button to return to origin page (preserving filter)
-    const backBtn = document.querySelector(".product-actions .btn--secondary");
+    // Back button
+    var backBtn = document.querySelector(".product-actions .btn--secondary");
     if (backBtn) {
-      const urlParams = new URLSearchParams(window.location.search);
-      const fromUrl = urlParams.get("from");
+      var urlParams = new URLSearchParams(window.location.search);
+      var fromUrl = urlParams.get("from");
       if (fromUrl) {
         try {
           backBtn.href = decodeURIComponent(fromUrl);
@@ -214,18 +187,16 @@
       }
     }
 
-    // Update WhatsApp button with product-specific message
-    const waBtn = document.querySelector(".product-actions .btn--primary");
+    // WhatsApp button
+    var waBtn = document.querySelector(".product-actions .btn--primary");
     if (waBtn && product.mensagemWhatsApp) {
       waBtn.href = "https://wa.me/54999960180?text=" + encodeURIComponent(product.mensagemWhatsApp);
     }
 
-    // Update specs if available
-    if (product.especificacoes) {
-      updateSpecs(product.especificacoes);
-    }
+    // Specs
+    if (product.especificacoes) { updateSpecs(product.especificacoes); }
 
-    // Update gallery if images available
+    // Gallery
     if (product.imagens && product.imagens.length > 0) {
       updateGallery(product.imagens);
     } else if (product.imagem) {
@@ -233,24 +204,24 @@
     }
   }
 
-  /**
-   * Update the description and specs tabs content dynamically
-   */
+  // ================================================
+  // TABS CONTENT
+  // ================================================
   function updateTabsContent(product) {
-    const tabContents = document.querySelectorAll(".product-tabs__content");
+    var tabContents = document.querySelectorAll(".product-tabs__content");
     if (!tabContents || tabContents.length === 0) return;
 
     // Tab 0: Descrição
     if (tabContents[0]) {
-      var descHtml = '<h3>Sobre Este Produto</h3>';
-      descHtml += '<p>' + product.descricao + '</p>';
+      var descHtml = "<h3>Sobre Este Produto</h3>";
+      descHtml += "<p>" + product.descricao + "</p>";
 
       if (product.caracteristicas && product.caracteristicas.length > 0) {
         descHtml += '<ul style="margin-top:1rem;padding-left:1.25rem;">';
-        product.caracteristicas.forEach(function (item) {
-          descHtml += '<li style="margin-bottom:0.4rem;">' + item + '</li>';
-        });
-        descHtml += '</ul>';
+        for (var i = 0; i < product.caracteristicas.length; i++) {
+          descHtml += '<li style="margin-bottom:0.4rem;">' + product.caracteristicas[i] + "</li>";
+        }
+        descHtml += "</ul>";
       }
 
       descHtml += '<p style="margin-top:1rem;">Fabricados em Aratiba-RS, nossos fogões são ideais para quem busca qualidade, funcionalidade e o calor acolhedor de um produto feito com dedicação. Todos os produtos TERRIBILE atendem às normas técnicas brasileiras e passam por testes rigorosos antes da entrega.</p>';
@@ -259,138 +230,122 @@
 
     // Tab 1: Especificações
     if (tabContents[1] && product.especificacoes) {
-      var specsHtml = '<h3>Especificações Detalhadas</h3>';
+      var specsHtml = "<h3>Especificações Detalhadas</h3>";
       specsHtml += '<table style="width:100%;border-collapse:collapse;">';
-      Object.entries(product.especificacoes).forEach(function (entry) {
+      var keys = Object.keys(product.especificacoes);
+      for (var k = 0; k < keys.length; k++) {
         specsHtml += '<tr style="border-bottom:1px solid rgba(255,255,255,0.08);">' +
-          '<td style="padding:0.6rem 0.5rem;font-weight:600;width:45%;color:var(--color-primary,#c0392b);">' + entry[0] + '</td>' +
-          '<td style="padding:0.6rem 0.5rem;">' + entry[1] + '</td>' +
-          '</tr>';
-      });
-      specsHtml += '</table>';
+          '<td style="padding:0.6rem 0.5rem;font-weight:600;width:45%;color:var(--color-primary,#c0392b);">' + keys[k] + "</td>" +
+          '<td style="padding:0.6rem 0.5rem;">' + product.especificacoes[keys[k]] + "</td>" +
+          "</tr>";
+      }
+      specsHtml += "</table>";
       specsHtml += '<p style="margin-top:1rem;font-size:0.85rem;opacity:0.7;">Estamos em constante desenvolvimento. Nos reservamos o direito de alterar especificações sem aviso prévio.</p>';
       tabContents[1].innerHTML = specsHtml;
     }
   }
 
-  /**
-   * Update specifications grid
-   */
+  // ================================================
+  // SPECS GRID
+  // ================================================
   function updateSpecs(specs) {
-    const specsGrid = document.querySelector(".product-specs__grid");
+    var specsGrid = document.querySelector(".product-specs__grid");
     if (!specsGrid || !specs) return;
 
     specsGrid.innerHTML = "";
-
-    Object.entries(specs).forEach(([key, value]) => {
-      const specItem = document.createElement("div");
+    var keys = Object.keys(specs);
+    for (var i = 0; i < keys.length; i++) {
+      var specItem = document.createElement("div");
       specItem.className = "product-specs__item";
       specItem.innerHTML =
-        '<span class="product-specs__label">' + key + ':</span>' +
-        '<span class="product-specs__value">' + value + '</span>';
+        '<span class="product-specs__label">' + keys[i] + ":</span>" +
+        '<span class="product-specs__value">' + specs[keys[i]] + "</span>";
       specsGrid.appendChild(specItem);
-    });
+    }
   }
 
-  /**
-   * Update gallery with product images
-   */
+  // ================================================
+  // GALLERY UPDATE
+  // ================================================
   function updateGallery(images) {
-    const mainContainer = document.querySelector(".product-gallery__main");
-    const thumbnailsContainer = document.querySelector(
-      ".product-gallery__thumbnails",
-    );
-    const placeholder = document.querySelector(".product-gallery__placeholder");
+    var mainContainer = document.querySelector(".product-gallery__main");
+    var thumbnailsContainer = document.querySelector(".product-gallery__thumbnails");
+    var placeholder = document.querySelector(".product-gallery__placeholder");
 
     if (!mainContainer || !thumbnailsContainer) return;
 
-    // Se não tem imagens, mantém placeholder
     if (!images || images.length === 0) {
-      if (placeholder) {
-        placeholder.style.display = "flex";
-      }
+      if (placeholder) { placeholder.style.display = "flex"; }
       return;
     }
 
-    // Esconde placeholder
-    if (placeholder) {
-      placeholder.style.display = "none";
+    if (placeholder) { placeholder.style.display = "none"; }
+
+    // Clear existing
+    var existingImages = mainContainer.querySelectorAll(".product-gallery__image");
+    for (var r = 0; r < existingImages.length; r++) {
+      existingImages[r].parentNode.removeChild(existingImages[r]);
     }
-
-    // Limpa container principal
-    const existingImages = mainContainer.querySelectorAll(
-      ".product-gallery__image",
-    );
-    existingImages.forEach((img) => img.remove());
-
-    // Limpa thumbnails
     thumbnailsContainer.innerHTML = "";
 
-    // Adiciona cada imagem
-    images.forEach((imageUrl, index) => {
-      // Adiciona imagem principal
-      const img = document.createElement("img");
+    // Add images
+    for (var i = 0; i < images.length; i++) {
+      var imageUrl = images[i];
+
+      // Main image
+      var img = document.createElement("img");
       img.src = imageUrl;
-      img.alt = `Produto - Imagem ${index + 1}`;
+      img.alt = "Produto - Imagem " + (i + 1);
       img.className = "product-gallery__image";
-      if (index === 0) {
-        img.classList.add("active");
-      }
-      mainContainer.insertBefore(
-        img,
-        mainContainer.querySelector(".product-gallery__nav"),
-      );
+      if (i === 0) { img.classList.add("active"); }
 
-      // Adiciona thumbnail
-      const thumb = document.createElement("div");
+      var navEl = mainContainer.querySelector(".product-gallery__nav");
+      if (navEl) {
+        mainContainer.insertBefore(img, navEl);
+      } else {
+        mainContainer.appendChild(img);
+      }
+
+      // Thumbnail
+      var thumb = document.createElement("div");
       thumb.className = "product-gallery__thumbnail";
-      if (index === 0) {
-        thumb.classList.add("active");
-      }
+      if (i === 0) { thumb.classList.add("active"); }
 
-      const thumbImg = document.createElement("img");
+      var thumbImg = document.createElement("img");
       thumbImg.src = imageUrl;
-      thumbImg.alt = `Thumbnail ${index + 1}`;
+      thumbImg.alt = "Thumbnail " + (i + 1);
       thumb.appendChild(thumbImg);
-
       thumbnailsContainer.appendChild(thumb);
-    });
-
-    // Reinicializa galeria se necessário
-    const gallery = document.querySelector(".product-gallery");
-    if (gallery && window.ProductGallery) {
-      new window.ProductGallery(gallery);
     }
-  }
 
-  /**
-   * Initialize page
-   */
-  function init() {
-    // Initialize gallery
-    const gallery = document.querySelector(".product-gallery");
+    // Re-init gallery
+    var gallery = document.querySelector(".product-gallery");
     if (gallery) {
       new ProductGallery(gallery);
     }
+  }
 
-    // Initialize tabs
-    const tabs = document.querySelector(".product-tabs");
-    if (tabs) {
-      new ProductTabs(tabs);
-    }
+  // ================================================
+  // INIT
+  // ================================================
+  function init() {
+    var gallery = document.querySelector(".product-gallery");
+    if (gallery) { new ProductGallery(gallery); }
 
-    // Load product data
+    var tabs = document.querySelector(".product-tabs");
+    if (tabs) { new ProductTabs(tabs); }
+
     loadProductData();
   }
 
-  // Initialize when DOM is ready
   if (document.readyState === "loading") {
     document.addEventListener("DOMContentLoaded", init);
   } else {
     init();
   }
 
-  // Expose functions globally if needed
+  // Expose globally
   window.ProductGallery = ProductGallery;
   window.ProductTabs = ProductTabs;
+
 })();
