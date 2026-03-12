@@ -65,6 +65,17 @@
   margin-bottom: var(--spacing-xl);
 }
 
+/* Desktop: Features fica na primeira coluna, abaixo da galeria */
+.product-detail__grid > .product-gallery {
+  grid-column: 1;
+  grid-row: 1;
+}
+
+.product-detail__grid > .product-info {
+  grid-column: 2;
+  grid-row: 1; /* Ocupa apenas uma linha agora */
+}
+
 /* ============================================
    PRODUCT GALLERY
    ============================================ */
@@ -282,6 +293,11 @@
   border-left: 4px solid var(--color-primary);
 }
 
+/* Item que ocupa linha inteira (para quando tiver número ímpar) */
+.product-specs__grid .product-specs__item:last-child:nth-child(odd) {
+  grid-column: 1 / -1;
+}
+
 .product-specs__item {
   display: flex;
   flex-direction: column;
@@ -306,13 +322,24 @@
    PRODUCT FEATURES
    ============================================ */
 
+/* Container para Features e Frase lado a lado */
+.features-frase-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--spacing-lg);
+  margin-bottom: var(--spacing-xl);
+}
+
 .product-features {
-  margin-bottom: var(--spacing-lg);
+  background: var(--color-off-white);
+  padding: var(--spacing-md);
+  border-radius: 8px;
+  border-left: 4px solid var(--color-primary);
 }
 
 .product-features__list {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: 1fr;
   gap: 1rem;
   list-style: none;
 }
@@ -345,7 +372,6 @@
 
 .product-frase {
   position: relative;
-  margin-bottom: var(--spacing-lg);
   padding: 1.75rem 1.75rem 1.75rem 2rem;
   background: linear-gradient(135deg, var(--color-primary) 0%, #8b1a12 100%);
   border-radius: 8px;
@@ -545,6 +571,17 @@
 @media (max-width: 1024px) {
   .product-detail__grid {
     grid-template-columns: 1fr;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  /* Ordem no tablet/mobile: Galeria → Info */
+  .product-detail__grid > .product-gallery {
+    order: 1;
+  }
+  
+  .product-detail__grid > .product-info {
+    order: 2;
   }
   
   .product-gallery {
@@ -552,11 +589,17 @@
     top: 0;
   }
   
-  .product-specs__grid {
+  /* Container features-frase em coluna única no tablet/mobile */
+  .features-frase-container {
     grid-template-columns: 1fr;
   }
   
+  /* Features em 2 colunas no tablet */
   .product-features__list {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  
+  .product-specs__grid {
     grid-template-columns: 1fr;
   }
   
@@ -572,6 +615,11 @@
   
   .product-gallery__thumbnails {
     grid-template-columns: repeat(4, 1fr);
+  }
+  
+  /* Features em 1 coluna no mobile */
+  .product-features__list {
+    grid-template-columns: 1fr;
   }
   
   .product-actions {

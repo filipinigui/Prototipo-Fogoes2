@@ -70,7 +70,8 @@ const produtosData = {
         Tipo: "A lenha",
         "Saídas da Chaminé":
           "Atrás lado direito e esquerdo/ Na chapa lado direito e esquerdo",
-        Chapa: "Vitrocerâmica 80 x 60cm",
+        Chapa: "Vitrocerâmica ",
+        "Tamanho da chapa": "80 x 60cm",
         "Tamanho da chapa com varão": "100 X 73cm",
         "Diâmetro da Chaminé": "Ø 115 mm",
         "Dimensões (A x L x P)": "85 x 93 x 63 cm",

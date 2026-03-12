@@ -187,7 +187,10 @@
         for (var i = 0; i < product.caracteristicas.length; i++) {
           var caracFull = product.caracteristicas[i];
           var colonIdx = caracFull.indexOf(":");
-          var cardLabel = colonIdx !== -1 ? caracFull.substring(0, colonIdx).trim() : caracFull;
+          var cardLabel =
+            colonIdx !== -1
+              ? caracFull.substring(0, colonIdx).trim()
+              : caracFull;
           html +=
             '<li class="product-features__item">' +
             '<i class="bi bi-check-circle-fill"></i>' +
@@ -309,17 +312,29 @@
     var specsGrid = document.querySelector(".product-specs__grid");
     if (!specsGrid || !specs) return;
 
+    // Apenas estas 5 categorias devem aparecer ao lado das imagens
+    var allowedKeys = [
+      "Modelo",
+      "Saídas da Chaminé",
+      "Chapa",
+      "Tamanho da chapa",
+      "Tipo",
+    ];
+
     specsGrid.innerHTML = "";
-    var keys = Object.keys(specs);
-    for (var i = 0; i < keys.length; i++) {
+
+    for (var i = 0; i < allowedKeys.length; i++) {
+      var key = allowedKeys[i];
+      var value = specs[key] || "-";
+
       var specItem = document.createElement("div");
       specItem.className = "product-specs__item";
       specItem.innerHTML =
         '<span class="product-specs__label">' +
-        keys[i] +
+        key +
         ":</span>" +
         '<span class="product-specs__value">' +
-        specs[keys[i]] +
+        value +
         "</span>";
       specsGrid.appendChild(specItem);
     }
