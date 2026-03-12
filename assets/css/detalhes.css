@@ -39,7 +39,7 @@
 }
 
 .breadcrumb-item + .breadcrumb-item::before {
-  content: '›';
+  content: "›";
   color: var(--color-gray);
   padding: 0 0.5rem;
 }
@@ -112,7 +112,11 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  background: linear-gradient(135deg, var(--color-gray-dark) 0%, var(--color-black) 100%);
+  background: linear-gradient(
+    135deg,
+    var(--color-gray-dark) 0%,
+    var(--color-black) 100%
+  );
   font-size: 8rem;
   color: var(--color-primary);
 }
@@ -228,7 +232,7 @@
 .product-info__stars {
   display: flex;
   gap: 0.25rem;
-  color: #FFA500;
+  color: #ffa500;
   font-size: 1.125rem;
 }
 
@@ -323,11 +327,10 @@
    ============================================ */
 
 /* Container para Features e Frase lado a lado */
-.features-frase-container {
+.features-container {
   display: grid;
-  grid-template-columns: 1fr 1fr;
   gap: var(--spacing-lg);
-  margin-bottom: var(--spacing-xl);
+  margin-top: var(--spacing-xl);
 }
 
 .product-features {
@@ -574,35 +577,35 @@
     display: flex;
     flex-direction: column;
   }
-  
+
   /* Ordem no tablet/mobile: Galeria → Info */
   .product-detail__grid > .product-gallery {
     order: 1;
   }
-  
+
   .product-detail__grid > .product-info {
     order: 2;
   }
-  
+
   .product-gallery {
     position: relative;
     top: 0;
   }
-  
+
   /* Container features-frase em coluna única no tablet/mobile */
   .features-frase-container {
     grid-template-columns: 1fr;
   }
-  
+
   /* Features em 2 colunas no tablet */
   .product-features__list {
     grid-template-columns: repeat(2, 1fr);
   }
-  
+
   .product-specs__grid {
     grid-template-columns: 1fr;
   }
-  
+
   .product-info-cards {
     grid-template-columns: 1fr;
   }
@@ -612,25 +615,25 @@
   .breadcrumb-section {
     padding-top: calc(70px + 1rem);
   }
-  
+
   .product-gallery__thumbnails {
     grid-template-columns: repeat(4, 1fr);
   }
-  
+
   /* Features em 1 coluna no mobile */
   .product-features__list {
     grid-template-columns: 1fr;
   }
-  
+
   .product-actions {
     flex-direction: column;
   }
-  
+
   .product-tabs__nav {
     overflow-x: auto;
     -webkit-overflow-scrolling: touch;
   }
-  
+
   .product-tabs__btn {
     white-space: nowrap;
   }
