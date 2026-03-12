@@ -137,6 +137,20 @@
   margin-bottom: 1.5rem;
 }
 
+.floating-button {
+  z-index: 100;
+  padding-bottom: 2rem;
+  box-shadow: var(--color-off-white);
+  img {
+    width: 5rem;
+    height: 5rem;
+  };  
+}
+
+.floating-button:hover{
+  transform:scale(120%);
+}
+
 /* ============================================
    PRODUCT CARDS
    ============================================ */
@@ -493,7 +507,6 @@
 ================================================= */
 
 @media (max-width: 768px) {
-
   /* Botões: largura completa no mobile */
   .btn {
     width: 100%;
@@ -561,7 +574,6 @@
     font-size: 0.9375rem;
     line-height: 1.7;
   }
-
 }
 
 @media (max-width: 400px) {
