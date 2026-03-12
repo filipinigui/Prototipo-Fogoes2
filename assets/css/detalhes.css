@@ -340,6 +340,48 @@
 }
 
 /* ============================================
+   PRODUCT FRASE
+   ============================================ */
+
+.product-frase {
+  position: relative;
+  margin-bottom: var(--spacing-lg);
+  padding: 1.75rem 1.75rem 1.75rem 2rem;
+  background: linear-gradient(135deg, var(--color-primary) 0%, #8b1a12 100%);
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.product-frase::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 6px;
+  height: 100%;
+  background: rgba(255, 255, 255, 0.3);
+  border-radius: 4px 0 0 4px;
+}
+
+.product-frase__icon {
+  display: block;
+  font-size: 2.5rem;
+  color: rgba(255, 255, 255, 0.35);
+  line-height: 1;
+  margin-bottom: 0.5rem;
+}
+
+.product-frase__text {
+  font-family: var(--font-primary);
+  font-size: 1.05rem;
+  font-style: italic;
+  font-weight: 500;
+  color: var(--color-white);
+  line-height: 1.7;
+  margin: 0;
+}
+
+/* ============================================
    PRODUCT ACTIONS
    ============================================ */
 

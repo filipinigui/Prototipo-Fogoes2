@@ -13,7 +13,9 @@
   function ProductGallery(galleryElement) {
     this.gallery = galleryElement;
     this.images = galleryElement.querySelectorAll(".product-gallery__image");
-    this.thumbnails = galleryElement.querySelectorAll(".product-gallery__thumbnail");
+    this.thumbnails = galleryElement.querySelectorAll(
+      ".product-gallery__thumbnail",
+    );
     this.currentIndex = 0;
     this._init();
   }
@@ -34,16 +36,23 @@
     var prevBtn = this.gallery.querySelector(".product-gallery__nav-btn--prev");
     var nextBtn = this.gallery.querySelector(".product-gallery__nav-btn--next");
     if (prevBtn) {
-      prevBtn.addEventListener("click", function () { self.previousSlide(); });
+      prevBtn.addEventListener("click", function () {
+        self.previousSlide();
+      });
     }
     if (nextBtn) {
-      nextBtn.addEventListener("click", function () { self.nextSlide(); });
+      nextBtn.addEventListener("click", function () {
+        self.nextSlide();
+      });
     }
 
     // Keyboard
     document.addEventListener("keydown", function (e) {
-      if (e.key === "ArrowLeft") { self.previousSlide(); }
-      else if (e.key === "ArrowRight") { self.nextSlide(); }
+      if (e.key === "ArrowLeft") {
+        self.previousSlide();
+      } else if (e.key === "ArrowRight") {
+        self.nextSlide();
+      }
     });
   };
 
@@ -54,8 +63,12 @@
     for (var j = 0; j < this.thumbnails.length; j++) {
       this.thumbnails[j].classList.remove("active");
     }
-    if (this.images[index]) { this.images[index].classList.add("active"); }
-    if (this.thumbnails[index]) { this.thumbnails[index].classList.add("active"); }
+    if (this.images[index]) {
+      this.images[index].classList.add("active");
+    }
+    if (this.thumbnails[index]) {
+      this.thumbnails[index].classList.add("active");
+    }
     this.currentIndex = index;
   };
 
@@ -65,7 +78,8 @@
   };
 
   ProductGallery.prototype.previousSlide = function () {
-    var prevIndex = (this.currentIndex - 1 + this.images.length) % this.images.length;
+    var prevIndex =
+      (this.currentIndex - 1 + this.images.length) % this.images.length;
     this.goToSlide(prevIndex);
   };
 
@@ -97,8 +111,12 @@
     for (var j = 0; j < this.contents.length; j++) {
       this.contents[j].classList.remove("active");
     }
-    if (this.buttons[index]) { this.buttons[index].classList.add("active"); }
-    if (this.contents[index]) { this.contents[index].classList.add("active"); }
+    if (this.buttons[index]) {
+      this.buttons[index].classList.add("active");
+    }
+    if (this.contents[index]) {
+      this.contents[index].classList.add("active");
+    }
   };
 
   // ================================================
@@ -139,32 +157,59 @@
 
     // Product title
     var titleEl = document.querySelector(".product-info__title");
-    if (titleEl) { titleEl.textContent = product.nome; }
+    if (titleEl) {
+      titleEl.textContent = product.nome;
+    }
 
     // Breadcrumb
     var breadcrumb = document.querySelector(".breadcrumb-item.active");
-    if (breadcrumb) { breadcrumb.textContent = product.nome; }
+    if (breadcrumb) {
+      breadcrumb.textContent = product.nome;
+    }
 
     // Category
     var categoryEl = document.querySelector(".product-info__category");
-    if (categoryEl) { categoryEl.textContent = product.categoria; }
+    if (categoryEl) {
+      categoryEl.textContent = product.categoria;
+    }
 
     // Description
     var descEl = document.querySelector(".product-info__description");
-    if (descEl && product.descricao) { descEl.textContent = product.descricao; }
+    if (descEl && product.descricao) {
+      descEl.textContent = product.descricao;
+    }
 
-    // Features list
+    // Features list - mostra apenas o texto ANTES do ":" nos cards
     if (product.caracteristicas && product.caracteristicas.length > 0) {
       var featuresList = document.querySelector(".product-features__list");
       if (featuresList) {
         var html = "";
         for (var i = 0; i < product.caracteristicas.length; i++) {
-          html += '<li class="product-features__item">' +
+          var caracFull = product.caracteristicas[i];
+          var colonIdx = caracFull.indexOf(":");
+          var cardLabel = colonIdx !== -1 ? caracFull.substring(0, colonIdx).trim() : caracFull;
+          html +=
+            '<li class="product-features__item">' +
             '<i class="bi bi-check-circle-fill"></i>' +
-            "<span>" + product.caracteristicas[i] + "</span>" +
+            "<span>" +
+            cardLabel +
+            "</span>" +
             "</li>";
         }
         featuresList.innerHTML = html;
+      }
+    }
+
+    // Frase do produto
+    if (product.frase && product.frase.length > 0) {
+      var fraseEl = document.querySelector(".product-frase");
+      if (fraseEl) {
+        fraseEl.innerHTML =
+          '<i class="bi bi-quote product-frase__icon"></i>' +
+          '<p class="product-frase__text">' +
+          product.frase[0] +
+          "</p>";
+        fraseEl.style.display = "";
       }
     }
 
@@ -190,11 +235,15 @@
     // WhatsApp button
     var waBtn = document.querySelector(".product-actions .btn--primary");
     if (waBtn && product.mensagemWhatsApp) {
-      waBtn.href = "https://wa.me/54999960180?text=" + encodeURIComponent(product.mensagemWhatsApp);
+      waBtn.href =
+        "https://wa.me/54999960180?text=" +
+        encodeURIComponent(product.mensagemWhatsApp);
     }
 
     // Specs
-    if (product.especificacoes) { updateSpecs(product.especificacoes); }
+    if (product.especificacoes) {
+      updateSpecs(product.especificacoes);
+    }
 
     // Gallery
     if (product.imagens && product.imagens.length > 0) {
@@ -219,12 +268,16 @@
       if (product.caracteristicas && product.caracteristicas.length > 0) {
         descHtml += '<ul style="margin-top:1rem;padding-left:1.25rem;">';
         for (var i = 0; i < product.caracteristicas.length; i++) {
-          descHtml += '<li style="margin-bottom:0.4rem;">' + product.caracteristicas[i] + "</li>";
+          descHtml +=
+            '<li style="margin-bottom:0.4rem;">' +
+            product.caracteristicas[i] +
+            "</li>";
         }
         descHtml += "</ul>";
       }
 
-      descHtml += '<p style="margin-top:1rem;">Fabricados em Aratiba-RS, nossos fogões são ideais para quem busca qualidade, funcionalidade e o calor acolhedor de um produto feito com dedicação. Todos os produtos TERRIBILE atendem às normas técnicas brasileiras e passam por testes rigorosos antes da entrega.</p>';
+      descHtml +=
+        '<p style="margin-top:1rem;">Fabricados com dedicação em Aratiba-RS, nossos fogões são sinônimo de qualidade, funcionalidade e do calor acolhedor que só um produto feito com paixão pode oferecer.</p>';
       tabContents[0].innerHTML = descHtml;
     }
 
@@ -234,13 +287,17 @@
       specsHtml += '<table style="width:100%;border-collapse:collapse;">';
       var keys = Object.keys(product.especificacoes);
       for (var k = 0; k < keys.length; k++) {
-        specsHtml += '<tr style="border-bottom:1px solid rgba(255,255,255,0.08);">' +
-          '<td style="padding:0.6rem 0.5rem;font-weight:600;width:45%;color:var(--color-primary,#c0392b);">' + keys[k] + "</td>" +
-          '<td style="padding:0.6rem 0.5rem;">' + product.especificacoes[keys[k]] + "</td>" +
+        specsHtml +=
+          '<tr style="border-bottom:1px solid rgba(255,255,255,0.08);">' +
+          '<td style="padding:0.6rem 0.5rem;font-weight:600;width:45%;color:var(--color-primary,#c0392b);">' +
+          keys[k] +
+          "</td>" +
+          '<td style="padding:0.6rem 0.5rem;">' +
+          product.especificacoes[keys[k]] +
+          "</td>" +
           "</tr>";
       }
       specsHtml += "</table>";
-      specsHtml += '<p style="margin-top:1rem;font-size:0.85rem;opacity:0.7;">Estamos em constante desenvolvimento. Nos reservamos o direito de alterar especificações sem aviso prévio.</p>';
       tabContents[1].innerHTML = specsHtml;
     }
   }
@@ -258,8 +315,12 @@
       var specItem = document.createElement("div");
       specItem.className = "product-specs__item";
       specItem.innerHTML =
-        '<span class="product-specs__label">' + keys[i] + ":</span>" +
-        '<span class="product-specs__value">' + specs[keys[i]] + "</span>";
+        '<span class="product-specs__label">' +
+        keys[i] +
+        ":</span>" +
+        '<span class="product-specs__value">' +
+        specs[keys[i]] +
+        "</span>";
       specsGrid.appendChild(specItem);
     }
   }
@@ -269,20 +330,28 @@
   // ================================================
   function updateGallery(images) {
     var mainContainer = document.querySelector(".product-gallery__main");
-    var thumbnailsContainer = document.querySelector(".product-gallery__thumbnails");
+    var thumbnailsContainer = document.querySelector(
+      ".product-gallery__thumbnails",
+    );
     var placeholder = document.querySelector(".product-gallery__placeholder");
 
     if (!mainContainer || !thumbnailsContainer) return;
 
     if (!images || images.length === 0) {
-      if (placeholder) { placeholder.style.display = "flex"; }
+      if (placeholder) {
+        placeholder.style.display = "flex";
+      }
       return;
     }
 
-    if (placeholder) { placeholder.style.display = "none"; }
+    if (placeholder) {
+      placeholder.style.display = "none";
+    }
 
     // Clear existing
-    var existingImages = mainContainer.querySelectorAll(".product-gallery__image");
+    var existingImages = mainContainer.querySelectorAll(
+      ".product-gallery__image",
+    );
     for (var r = 0; r < existingImages.length; r++) {
       existingImages[r].parentNode.removeChild(existingImages[r]);
     }
@@ -297,7 +366,9 @@
       img.src = imageUrl;
       img.alt = "Produto - Imagem " + (i + 1);
       img.className = "product-gallery__image";
-      if (i === 0) { img.classList.add("active"); }
+      if (i === 0) {
+        img.classList.add("active");
+      }
 
       var navEl = mainContainer.querySelector(".product-gallery__nav");
       if (navEl) {
@@ -309,7 +380,9 @@
       // Thumbnail
       var thumb = document.createElement("div");
       thumb.className = "product-gallery__thumbnail";
-      if (i === 0) { thumb.classList.add("active"); }
+      if (i === 0) {
+        thumb.classList.add("active");
+      }
 
       var thumbImg = document.createElement("img");
       thumbImg.src = imageUrl;
@@ -330,10 +403,14 @@
   // ================================================
   function init() {
     var gallery = document.querySelector(".product-gallery");
-    if (gallery) { new ProductGallery(gallery); }
+    if (gallery) {
+      new ProductGallery(gallery);
+    }
 
     var tabs = document.querySelector(".product-tabs");
-    if (tabs) { new ProductTabs(tabs); }
+    if (tabs) {
+      new ProductTabs(tabs);
+    }
 
     loadProductData();
   }
@@ -347,5 +424,4 @@
   // Expose globally
   window.ProductGallery = ProductGallery;
   window.ProductTabs = ProductTabs;
-
 })();
