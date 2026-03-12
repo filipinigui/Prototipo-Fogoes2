@@ -60,8 +60,8 @@ const produtosData = {
       descricao:
         "Fogão a lenha de grande porte  com chapa vitrocerâmica. Ideal para famílias que exigem maior área de cozimento e aquecimento, aliada à elegância e durabilidade.",
       imagens: [
-        "assets/img/produtos/vitroceramica/fogao2-frente.jpg",
-        "assets/img/produtos/vitroceramica/fogao2-lateral.jpg",
+        "assets/img/produtos/vitroceramica/vitroceramica-lorem2-gabinete.png .png",
+        "assets/img/produtos/vitroceramica/vitroceramica-lorem2-gabinete2.png",
         "assets/img/produtos/vitroceramica/fogao2-topo.jpg",
         "assets/img/produtos/vitroceramica/fogao2-detalhe.jpg",
       ],
