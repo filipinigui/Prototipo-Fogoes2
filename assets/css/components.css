@@ -94,6 +94,19 @@
   color: white;
 }
 
+.floating-button {
+  z-index: 100;
+  margin: 2rem;
+    img {
+    width: 5rem;
+    height: 5rem;
+  };  
+}
+
+.floating-button:hover{
+  transform: scale(1.1);
+}
+
 /* ============================================
    CATEGORY CARDS
    ============================================ */
@@ -137,19 +150,6 @@
   margin-bottom: 1.5rem;
 }
 
-.floating-button {
-  z-index: 100;
-  padding-bottom: 2rem;
-  box-shadow: var(--color-off-white);
-  img {
-    width: 5rem;
-    height: 5rem;
-  };  
-}
-
-.floating-button:hover{
-  transform:scale(120%);
-}
 
 /* ============================================
    PRODUCT CARDS

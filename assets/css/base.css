@@ -21,7 +21,8 @@
   
   /* Gradients */
   --gradient-primary: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-dark) 100%);
-  
+  --gradient-button: radial-gradient(var(--color-primary-dark) ,transparent, transparent );
+
   /* Shadows */
   --shadow-sm: 0 2px 4px rgba(26, 26, 26, 0.1);
   --shadow-md: 0 4px 12px rgba(26, 26, 26, 0.15);
